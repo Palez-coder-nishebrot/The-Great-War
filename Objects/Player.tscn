@@ -1,0 +1,169 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://Objects/Player.gd" type="Script" id=1]
+[ext_resource path="res://Sprites/ferma.png" type="Texture" id=2]
+[ext_resource path="res://Buttons/Button_for_production.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Research/Research.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Sprites/2020_08_05_080506.png" type="Texture" id=5]
+[ext_resource path="res://Sprites/kazarma1.png" type="Texture" id=6]
+[ext_resource path="res://Sprites/panel.png" type="Texture" id=7]
+[ext_resource path="res://Sprites/fabric2.png" type="Texture" id=8]
+
+[node name="Player ZN" type="Node2D"]
+z_index = 1
+script = ExtResource( 1 )
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Sprite" type="Sprite" parent="CanvasLayer"]
+position = Vector2( 59.2227, 400 )
+scale = Vector2( 1.19, 2.66667 )
+texture = ExtResource( 7 )
+
+[node name="object" type="Label" parent="CanvasLayer"]
+anchor_left = 0.009
+anchor_right = 0.075
+anchor_bottom = 0.009
+margin_left = -10.9903
+margin_right = -10.4703
+margin_bottom = 6.8
+text = "bruh"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="population" type="Label" parent="CanvasLayer"]
+margin_left = 0.529732
+margin_top = 16.0
+margin_right = 85.5297
+margin_bottom = 30.0
+text = "bruh"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="name" type="Label" parent="CanvasLayer"]
+margin_top = 32.0
+margin_right = 85.0
+margin_bottom = 46.0
+text = "bruh"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PartOf" type="Label" parent="CanvasLayer"]
+margin_left = 0.529732
+margin_top = 48.0
+margin_right = 60.5297
+margin_bottom = 62.0
+text = "bruh"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="building1" type="Button" parent="CanvasLayer"]
+margin_top = 80.0
+margin_right = 119.0
+margin_bottom = 108.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="building2" type="Button" parent="CanvasLayer"]
+margin_top = 108.0
+margin_right = 119.0
+margin_bottom = 136.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="building3" type="Button" parent="CanvasLayer"]
+margin_top = 136.0
+margin_right = 119.0
+margin_bottom = 164.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="building4" type="Button" parent="CanvasLayer"]
+margin_top = 164.0
+margin_right = 119.0
+margin_bottom = 192.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="var1" parent="CanvasLayer" instance=ExtResource( 3 )]
+position = Vector2( 120, 769 )
+
+[node name="Research" type="Button" parent="CanvasLayer"]
+margin_left = 120.0
+margin_top = 4.0
+margin_right = 230.0
+margin_bottom = 36.0
+text = "Research"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ResearchMENU" parent="CanvasLayer" instance=ExtResource( 4 )]
+position = Vector2( 928, 288 )
+scale = Vector2( 1.5, 1.5 )
+
+[node name="build_Factory" type="Button" parent="CanvasLayer"]
+margin_top = 696.0
+margin_right = 119.0
+margin_bottom = 802.0
+icon = ExtResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BuildBar" type="Button" parent="CanvasLayer"]
+margin_top = 488.0
+margin_right = 119.0
+margin_bottom = 594.0
+icon = ExtResource( 6 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Factory_for_other" type="Button" parent="CanvasLayer"]
+margin_top = 384.0
+margin_right = 119.0
+margin_bottom = 490.0
+icon = ExtResource( 8 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BuildFarm" type="Button" parent="CanvasLayer"]
+margin_top = 592.0
+margin_right = 119.0
+margin_bottom = 698.0
+icon = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Tipe" type="Label" parent="CanvasLayer"]
+margin_top = 65.0
+margin_right = 64.0
+margin_bottom = 79.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2( 704, 400 )
+current = true
+[connection signal="pressed" from="CanvasLayer/building1" to="." method="_on_building1_pressed"]
+[connection signal="pressed" from="CanvasLayer/building2" to="." method="_on_building2_pressed"]
+[connection signal="pressed" from="CanvasLayer/building3" to="." method="_on_building3_pressed"]
+[connection signal="pressed" from="CanvasLayer/building4" to="." method="_on_building4_pressed"]
+[connection signal="BUILD" from="CanvasLayer/var1" to="." method="_on_var1_BUILD"]
+[connection signal="pressed" from="CanvasLayer/Research" to="." method="_on_Research_pressed"]
+[connection signal="pressed" from="CanvasLayer/build_Factory" to="." method="_on_build_Factory_pressed"]
+[connection signal="pressed" from="CanvasLayer/BuildBar" to="." method="_on_BuildBar_pressed"]
+[connection signal="pressed" from="CanvasLayer/Factory_for_other" to="." method="_on_Factory_for_other_pressed"]
+[connection signal="pressed" from="CanvasLayer/BuildFarm" to="." method="_on_BuildFarm_pressed"]
