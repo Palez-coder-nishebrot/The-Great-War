@@ -8,77 +8,57 @@ var istrebitel = load("res://Sprite_Units/Istrebitel.png")
 var kavalerya = load("res://Sprite_Units/Kavalerya.png")
 var motor_pehota = load("res://Sprite_Units/Motor_Pehota.png")
 var tank = load("res://Sprite_Units/tank.png")
-onready var tiles = load("res://Tilemap.tres")
 var part_of = null
 var tipe_of_unit = null
 var detailed_description_of_unit = null
 var description_of_unit = null
 var control = false
-var unit
+var unit #конкретно юнит 
 var point
-var check_tile = null
-var name_of_tile
+var BODY = "UNIT"
+var color
+signal on_unit_click(SELF)
 func _ready():
 	point = position
-	get_node("Sprite2").visible = false
-	if part_of == "Sausenya":
-		get_node("Light2D").color.r = 0
-	elif part_of == "Rawnina":
-		get_node("Light2D").color.r = 60
-		get_node("Light2D").color.g = 60
-		get_node("Light2D").color.b = 60
-	elif part_of == "Korolewstvo Istland":
-		get_node("Light2D").color.g = 0
-		get_node("Light2D").color.a = 0
-		get_node("Light2D").color.r = 0
-	elif part_of == "Beregowot Korolestwo":
-		get_node("Light2D").color.g = 167
-		get_node("Light2D").color.b = 0
+	get_node("Sprite3").visible = false
+	if part_of == "Gorny":
+		get_node("Sprite").modulate #Color(1, 0.843353, 0.308594)
+		print("Gorny")
+	elif part_of == "Adamanty":
+		print("Adamanty")
+	elif part_of == "Tsarstvo Bascany":
+		print("Tsarstvo Bascany")
+	elif part_of == "Nasadry":
+		print("Nasadry")
 	else:
-		get_node("Light2D").color.g = 0
-		get_node("Light2D").color.b = 0
-	if tipe_of_unit == "tech":
-		if description_of_unit == "bronemach":
-			
-			pass
-		elif description_of_unit == "tank":
-			pass
-		else: #самолеты
-				pass
-	else: #infantry
-		
-		pass
-
+		print(part_of)
+	get_node("Sprite2").visible = true
+	set_color()
 func _process(_delta):
-	check_tile = get_node("RayCast2D/Node2D").position
 	move_to_point()
-	chek_tile(check_tile)
 	if control == true:
-		get_node("Sprite2").visible = true
 		if Input.is_action_pressed("left_mouse"):
 			point = get_global_mouse_position()
 			get_node("RayCast2D").look_at(point)
-	else:
-		get_node("Sprite2").visible = false
-
 func _on_Area2D_input_event(_viewport, event, _shape_idx):
 	if event is InputEventMouseButton:
 		if event.is_pressed():
-			if control == true:
-				control = false
-			else:
-				control = true
+			print(detailed_description_of_unit, " ", tipe_of_unit, " ", description_of_unit)
+			if part_of == get_parent().get_node("Player").part_of_player:
+				if control == true:
+					control = false
+					get_node("Sprite3").visible = false
+				else:
+					control = true
+					get_node("Sprite3").visible = true
+					emit_signal("on_unit_click", self)
 func move_to_point():
 	if position.distance_to(point) > stop_pos:
 		var direction = point - position
 		var norm_direction = direction.normalized()
 		move_and_slide(norm_direction * speed)
-		
-func chek_tile(where):
-	#get_parent().get_node("TileMap").value = check_tile
-	#get_parent().get_node("TileMap").CHECK = true
-	#name_of_tile = get_parent().get_node("TileMap").name_of_tile
-	#print(name_of_tile)
-	#if name_of_tile == 3:
-		#print("check")
+
+func set_color():
+	print(color)
+	get_node("Sprite2").modulate = color
 	pass

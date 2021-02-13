@@ -14,9 +14,11 @@ var control = false
 
 var STRIKE = false
 
+var Oil = 0
+var Mines = 0
 var object_for_build_but_for_city
 
-signal open(population, tipe, object, Name, build, partOf, pos, STRIKE)
+signal open(population, tipe, object, Name, build, partOf, pos, STRIKE, SELF)
 
 func _on_Area2D_input_event(_viewport, event, _shape_idx):
 	if event is InputEventMouseButton:
@@ -24,7 +26,7 @@ func _on_Area2D_input_event(_viewport, event, _shape_idx):
 			if partOf == get_parent().get_node("Player").part_of_player:
 				control = true
 			var pos = position
-			emit_signal("open", population, tipe, object, Name, build, partOf, pos, STRIKE)
+			emit_signal("open", population, tipe, object, Name, build, partOf, pos, STRIKE, self)
 
 func _ready():
 	if build[0] == 'none':

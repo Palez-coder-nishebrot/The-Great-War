@@ -1,9 +1,0 @@
-[gd_scene load_steps=2 format=2]
-
-[ext_resource path="res://tiles/NEW Tiles/BEREG.png" type="Texture" id=1]
-
-[node name="Node2D" type="Node2D"]
-scale = Vector2( 10, 10 )
-
-[node name="BEREG" type="Sprite" parent="."]
-texture = ExtResource( 1 )

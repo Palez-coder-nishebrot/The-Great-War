@@ -1,18 +1,71 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://tiles/NEW Tiles/NEW tile.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Objects/Player.tscn" type="PackedScene" id=2]
 [ext_resource path="res://scn/Game.gd" type="Script" id=3]
+[ext_resource path="res://tiles/K.png" type="Texture" id=4]
 
 [node name="Game" type="Node2D"]
 script = ExtResource( 3 )
+__meta__ = {
+"_edit_horizontal_guides_": [ 624.0 ]
+}
 
 [node name="Player" parent="." instance=ExtResource( 2 )]
 
-[node name="Timer" type="Timer" parent="."]
-wait_time = 4096.0
-autostart = true
-
 [node name="NEW tile" parent="." instance=ExtResource( 1 )]
-position = Vector2( 632, 464 )
-[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
+
+[node name="K" type="Sprite" parent="."]
+position = Vector2( 782, 661.5 )
+scale = Vector2( 24.3333, 23.8167 )
+z_index = -1
+texture = ExtResource( 4 )
+
+[node name="CZ" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="CZ"]
+position = Vector2( -208, 232 )
+polygon = PoolVector2Array( 1712, 616, 1464, 584, 1024, 576, 1096, 888, 1168, 1144, 1720, 1136 )
+
+[node name="BEREG" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="BEREG"]
+position = Vector2( -224, 328 )
+polygon = PoolVector2Array( 792, 1048, 768, 800, 720, 608, 600, 400, 480, 224, 448, 112, 550.318, 0.000518799, 582.318, 0.000518799, 798.318, 0.000518799, 846.318, 0.000518799, 904, 352, 1024, 536, 1088, 832, 1152, 1048 )
+
+[node name="PROT" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="PROT"]
+position = Vector2( -248, 234 )
+polygon = PoolVector2Array( 1760, 574, 1008, 542, 920, 336, 888, 96, 1760, 94 )
+
+[node name="KOROLEV" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="KOROLEV"]
+position = Vector2( -88, 224 )
+polygon = PoolVector2Array( 1600, -280, 1600, 80, 1136, 72, 1128, -272, 1344, -288 )
+
+[node name="RESP" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="RESP"]
+position = Vector2( -240, 312 )
+polygon = PoolVector2Array( 368, -368, 1248, -368, 1264, 0, 536, -8, 448, -176, 384, -272 )
+
+[node name="Timer_fo_tiles" type="Timer" parent="."]
+wait_time = 0.001
+[connection signal="body_entered" from="CZ" to="." method="_on_CZ_body_entered"]
+[connection signal="body_entered" from="BEREG" to="." method="_on_BEREG_body_entered"]
+[connection signal="body_entered" from="PROT" to="." method="_on_PROT_body_entered"]
+[connection signal="body_entered" from="KOROLEV" to="." method="_on_KOROLEV_body_entered"]
+[connection signal="body_entered" from="RESP" to="." method="_on_RESP_body_entered"]
+[connection signal="timeout" from="Timer_fo_tiles" to="." method="_on_Timer_fo_tiles_timeout"]

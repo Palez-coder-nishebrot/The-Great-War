@@ -1,9 +1,8 @@
 extends Node2D
 
-var SELF = self
 var TIME = 3
-var tipe = ""
-signal END(tipe)
+var tipe
+signal END
 
 func _ready():
 	get_node("Timer").start(TIME)
