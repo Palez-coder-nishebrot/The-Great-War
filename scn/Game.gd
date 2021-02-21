@@ -2,15 +2,28 @@ extends Node2D
 
 var City = load("res://Objects/City.tscn")
 var token = 0
+var time_of_game = {
+"day": 1,
+"month": 1,
+"year": 1918
+}
+
+var month_list = ["Январь", "Февраль", "Март", "Апрель", "Май", "Июнь", "Июль", "Август", "Сентябрь", "Октябрь", "Ноябрь", "Декабрь"]
 signal city_spawn(obj)
 signal timeout
-		
+
+func _process(_delta):
+	if Input.is_action_just_pressed("pause"):
+		if get_node("Time_of_game").paused == false:
+			get_node("Time_of_game").paused = true
+		else:
+			get_node("Time_of_game").paused = false
 func _ready():
 	spawnCity(Vector2(407, 215), 'a', 140, 'country', 'Adamanty', "none")
 	spawnCity(Vector2(794, 263), 'b', 140, 'country', 'Tsarstvo Bascany', "none")
 	spawnCity(Vector2(1175, 551), 'c', 140, 'country', 'Bascany Protectorat', "none")
-	spawnCity(Vector2(839, 791), 'd', 40, 'usually', 'Gorny', "factory")
-	spawnCity(Vector2(262, 503), 'f', 20, 'usually', 'Nasadry', "none")
+	spawnCity(Vector2(839, 791), 'd', 40, 'country', 'Gorny', "factory")
+	spawnCity(Vector2(262, 503), 'f', 20, 'country', 'Nasadry', "none")
 	
 	
 	spawnCity(Vector2(214, 119), 'g', 20, 'usually', 'Adamanty', "none")
@@ -43,7 +56,6 @@ func set_parties():
 			tk += 1
 		else:
 			get_node("Player").parties[i] = [p[0], p[1]]
-	#print(get_node("Player").parties)
 func spawnCity(pos, NameF, populationF, Tipe, PartOf, build):
 	var obj = City.instance()
 	obj.position = pos
@@ -72,3 +84,18 @@ func _on_CZ_body_entered(body):
 func _on_Timer_fo_tiles_timeout():
 	emit_signal("timeout")
 	get_node("Timer_fo_tiles").stop()
+
+func _on_Time_of_game_timeout():
+	if time_of_game["day"] == 31:
+		time_of_game["day"] = 1
+		time_of_game["month"] += 1
+		if time_of_game["month"] > 12:
+			time_of_game["month"] = 1
+			time_of_game["year"] += 1
+	else:
+		time_of_game["day"] += 1
+	var day = str(time_of_game["day"])
+	var month = month_list[time_of_game["month"] - 1]
+	var year = str(time_of_game["year"])
+	get_node("Player/CanvasLayer/time").text = "День: " + day + "\n Месяц: " + month + "\n Год: " + year
+		

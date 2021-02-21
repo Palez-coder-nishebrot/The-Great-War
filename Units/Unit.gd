@@ -15,29 +15,27 @@ var description_of_unit = null
 var control = false
 var unit #конкретно юнит 
 var point
-var BODY = "UNIT"
-var color
+const BODY = "UNIT"
 signal on_unit_click(SELF)
 func _ready():
 	point = position
 	get_node("Sprite3").visible = false
 	if part_of == "Gorny":
-		get_node("Sprite").modulate #Color(1, 0.843353, 0.308594)
+		get_node("Sprite2").modulate = Color( 0, 1, 1, 1 ) 
 		print("Gorny")
 	elif part_of == "Adamanty":
-		print("Adamanty")
+		get_node("Sprite2").modulate = Color( 1, 0.89, 0.77, 1 )
 	elif part_of == "Tsarstvo Bascany":
-		print("Tsarstvo Bascany")
+		get_node("Sprite2").modulate = Color( 0.65, 0.16, 0.16, 1 )
 	elif part_of == "Nasadry":
-		print("Nasadry")
+		get_node("Sprite2").modulate = Color( 1, 0.89, 0.77, 1 )
 	else:
-		print(part_of)
+		get_node("Sprite2").modulate = Color( 1, 0.89, 0.77, 1 )
 	get_node("Sprite2").visible = true
-	set_color()
 func _process(_delta):
 	move_to_point()
 	if control == true:
-		if Input.is_action_pressed("left_mouse"):
+		if Input.is_action_just_pressed("left_mouse"):
 			point = get_global_mouse_position()
 			get_node("RayCast2D").look_at(point)
 func _on_Area2D_input_event(_viewport, event, _shape_idx):
@@ -58,7 +56,3 @@ func move_to_point():
 		var norm_direction = direction.normalized()
 		move_and_slide(norm_direction * speed)
 
-func set_color():
-	print(color)
-	get_node("Sprite2").modulate = color
-	pass

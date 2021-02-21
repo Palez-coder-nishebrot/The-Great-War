@@ -3,22 +3,13 @@ extends Node
 var for_start
 var speed = 1
 
-var color = {"Red":  Color(1.0, 0, 0),
-"Orange":            Color(1, 0.678431, 0),
-"Brown":             Color(0.367188, 0.180725, 0),
-"Turquoise":        Color(0, 1, 0.671875),
-"Purple":           Color(0.523438, 0, 1),
-"Purple-Red":        Color(1, 0, 0.513726),
-"Blue":              Color(0, 0.062745, 1)
-}
-var country = {"Adamanty": color.get("Orange"), #Равнинная республика
-"Tsarstvo Bascany":       color.get("Red"), # Королевство Истленд
-"Bascany Protectorat":     color.get("Purple-Red"), #Протекторат Истленд 
-"Nasadry":                 color.get("Turquoise"), #Береговое королевство 
-"Gorny":                   color.get("Blue") #Саузения 
+var country = {"Adamanty": Color( 1, 0.89, 0.77, 1 ), #Равнинная республика
+"Tsarstvo Bascany":        Color( 0.65, 0.16, 0.16, 1 ), # Королевство Истленд
+"Bascany Protectorat":     Color( 1, 0.5, 0.31, 1 ) , #Протекторат Истленд 
+"Nasadry":                 Color( 1, 0.08, 0.58, 1 ), #Береговое королевство 
+"Gorny":                   Color( 0, 1, 1, 1 )  #Саузения 
 }
 
-var Use_colour = ["Purple", "Turquoise", "Brown", "Orange"]
 
 var weapon_and_attak = {
 	"Nivel's gun": [2, 1],
@@ -43,3 +34,11 @@ var parties_for_randi = {
 }
 
 var contries = ["Adamanty", "Tsarstvo Bascany", "Bascany Protectorat", "Nasadry", "Gorny"]
+
+var wars = {
+"Adamanty": [],
+"Tsarstvo Bascany": [],
+"Bascany Protectorat": [],
+"Nasadry": [],
+"Gorny": ["Bascany Protectorat"],
+}

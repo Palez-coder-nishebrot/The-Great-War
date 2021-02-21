@@ -28,15 +28,13 @@ func _ready():
 		passability += 40
 	get_parent().get_parent().connect("timeout", self, "_check")
 
-func _on_Area2D_body_entered(_body):
-	#if body.BODY == "UNIT":
-		#body.speed -= passability
-	pass
+func _on_Area2D_body_entered(body):
+	if body.BODY == "UNIT" and body.part_of != partOf:
+		partOf = body.part_of
+		var tk = Colours_for_count.get(partOf)
+		$Sprite2.modulate = tk
 func _on_Area2D_body_exited(_body):
-	#if body.BODY == "UNIT":
-		#body.speed += passability
 	pass
-
 
 
 func _on_Area2D_input_event(_viewport, event, _shape_idx):

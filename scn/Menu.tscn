@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://scn/Menu.gd" type="Script" id=1]
 [ext_resource path="res://Fonts/Oswald-VariableFont_wght.ttf" type="DynamicFontData" id=2]
@@ -22,6 +22,9 @@ size = 27
 font_data = ExtResource( 2 )
 
 [sub_resource type="DynamicFont" id=6]
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=7]
 font_data = ExtResource( 2 )
 
 [node name="Menu" type="Node2D"]
@@ -67,5 +70,17 @@ script = ExtResource( 3 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="Button4" type="Button" parent="."]
+margin_left = 1240.0
+margin_top = 760.0
+margin_right = 1408.0
+margin_bottom = 800.0
+custom_fonts/font = SubResource( 7 )
+text = "Выход"
+__meta__ = {
+"_edit_use_anchors_": false
+}
 [connection signal="pressed" from="Button" to="." method="_on_Button_pressed"]
 [connection signal="pressed" from="Button3" to="Button3" method="_on_Button3_pressed"]
+[connection signal="pressed" from="Button4" to="." method="_on_Button4_pressed"]

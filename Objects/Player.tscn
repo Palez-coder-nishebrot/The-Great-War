@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://Objects/Player.gd" type="Script" id=1]
 [ext_resource path="res://GUI/Check_unit.tscn" type="PackedScene" id=2]
@@ -39,6 +39,12 @@ font_data = ExtResource( 9 )
 font_data = ExtResource( 9 )
 
 [sub_resource type="DynamicFont" id=11]
+font_data = ExtResource( 9 )
+
+[sub_resource type="DynamicFont" id=12]
+font_data = ExtResource( 9 )
+
+[sub_resource type="DynamicFont" id=13]
 font_data = ExtResource( 9 )
 
 [node name="Player ZN" type="Node2D"]
@@ -144,7 +150,7 @@ __meta__ = {
 }
 
 [node name="ResearchMENU" parent="CanvasLayer" instance=ExtResource( 4 )]
-position = Vector2( 928, 288 )
+position = Vector2( 936, 40 )
 scale = Vector2( 1.5, 1.5 )
 
 [node name="build_Factory" type="Button" parent="CanvasLayer"]
@@ -230,6 +236,33 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="Exit" type="Button" parent="CanvasLayer"]
+visible = false
+margin_left = 552.0
+margin_top = 352.0
+margin_right = 808.0
+margin_bottom = 416.0
+custom_fonts/font = SubResource( 12 )
+text = "Выход"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="time" type="Label" parent="CanvasLayer"]
+margin_left = -4.0
+margin_top = 264.0
+margin_right = 116.0
+margin_bottom = 360.0
+custom_fonts/font = SubResource( 13 )
+text = "День: 1
+Месяц: Январь
+Год: 1918"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2( 704, 400 )
 current = true
@@ -239,7 +272,7 @@ visible = false
 position = Vector2( 345.009, 139.774 )
 
 [node name="Country_Info" parent="." instance=ExtResource( 5 )]
-position = Vector2( 432, 307 )
+position = Vector2( 456, 472 )
 [connection signal="pressed" from="CanvasLayer/building1" to="." method="_on_building1_pressed"]
 [connection signal="pressed" from="CanvasLayer/building2" to="." method="_on_building2_pressed"]
 [connection signal="pressed" from="CanvasLayer/building3" to="." method="_on_building3_pressed"]
@@ -252,3 +285,4 @@ position = Vector2( 432, 307 )
 [connection signal="pressed" from="CanvasLayer/BuildFarm" to="." method="_on_BuildFarm_pressed"]
 [connection signal="pressed" from="CanvasLayer/Oil_station" to="." method="_on_Oil_station_pressed"]
 [connection signal="pressed" from="CanvasLayer/Mine" to="." method="_on_Mine_pressed"]
+[connection signal="pressed" from="CanvasLayer/Exit" to="." method="_on_Exit_pressed"]

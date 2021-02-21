@@ -63,9 +63,14 @@ polygon = PoolVector2Array( 368, -368, 1248, -368, 1264, 0, 536, -8, 448, -176, 
 
 [node name="Timer_fo_tiles" type="Timer" parent="."]
 wait_time = 0.001
+
+[node name="Time_of_game" type="Timer" parent="."]
+wait_time = 3.5
+autostart = true
 [connection signal="body_entered" from="CZ" to="." method="_on_CZ_body_entered"]
 [connection signal="body_entered" from="BEREG" to="." method="_on_BEREG_body_entered"]
 [connection signal="body_entered" from="PROT" to="." method="_on_PROT_body_entered"]
 [connection signal="body_entered" from="KOROLEV" to="." method="_on_KOROLEV_body_entered"]
 [connection signal="body_entered" from="RESP" to="." method="_on_RESP_body_entered"]
 [connection signal="timeout" from="Timer_fo_tiles" to="." method="_on_Timer_fo_tiles_timeout"]
+[connection signal="timeout" from="Time_of_game" to="." method="_on_Time_of_game_timeout"]

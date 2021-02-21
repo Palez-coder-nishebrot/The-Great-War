@@ -15,8 +15,7 @@ const speed_mouse = 15
 
 var TILE_or_CITY_open = [null, null]
 
-var part_of_player = "Tsarstvo Bascany"
-var color
+var part_of_player = null
 
 var button_for_prod = load("res://Buttons/Button_for_production.tscn")
 var timer = load("res://timer/Sleep.tscn")
@@ -73,17 +72,18 @@ signal Build_building_for_tile
 var Name_of_city = null
 var objectForBuild = null
 
+##############################################
+###############ПОЛИТИКА###########################
 
 var party_members = []
 var party = {}
 var parties = {}
+var wars = []
 func _ready():
-	part_of_player = get_node("/root/Global").for_start 
-	if part_of_player == "Tsarstvo Bascany":
-		color = get_node("/root/Global").color.get("Red")
-	else:
-		pass
+	zoom_camera_start_game()
+# warning-ignore:return_value_discarded
 	get_parent().connect("city_spawn", self, "connect_signal_to_city")
+# warning-ignore:return_value_discarded
 	get_parent().get_node("NEW tile").connect("new_tile", self, "connect_signal_to_tile")
 	get_node("CanvasLayer/var1").visible = false
 	get_node("CanvasLayer/Factory_for_other").visible = false
@@ -101,6 +101,11 @@ func _ready():
 func connect_signal_to_city(obj):
 	obj.connect('open', self, 'OPEN')#Если на объект нажали, то
 func _process(delta):
+	if Input.is_action_just_pressed("ESC"):
+		if get_node("CanvasLayer/Exit").visible == false:
+			get_node("CanvasLayer/Exit").visible = true
+		else:
+			get_node("CanvasLayer/Exit").visible = false
 	if Input.is_action_pressed("ui_down"):
 		position.y += speed
 	if Input.is_action_pressed("ui_up"):
@@ -123,7 +128,19 @@ func _process(delta):
 		get_node("Camera2D").zoom.x = 1
 		get_node("Camera2D").zoom.y = 1
 	
-
+func zoom_camera_start_game():
+	part_of_player = get_node("/root/Global").for_start 
+	get_node("Camera2D").zoom = Vector2(0.5, 0.5)
+	if part_of_player == "Gorny":
+		get_node("Camera2D").position = Vector2(839, 791)
+	elif part_of_player == "Adamanty":
+		get_node("Camera2D").position = Vector2(407, 215)
+	elif part_of_player == "Tsarstvo Bascany":
+		get_node("Camera2D").position = Vector2(794, 263)
+	elif part_of_player == "Nasadry":
+		get_node("Camera2D").position = Vector2(262, 503)
+	else:
+		get_node("Camera2D").position = Vector2(1175, 551)
 func OPEN(population, tipe, object, Name, build, partOf, pos, STRIKE, SELF):
 	open() #обработчик невидимости кнопок
 	TILE_or_CITY_open[1] = "City" #мы открыли город
@@ -273,7 +290,6 @@ func spawn_timer(tipeOfUnit):
 	
 func spawn_unit(tipe):
 	var obj = unit.instance()
-	obj.color = color
 	obj.position = POS
 	obj.part_of = part_of_player
 	obj.tipe_of_unit = tipe
@@ -325,7 +341,11 @@ func open():
 	get_node("CanvasLayer/Oil_station").visible = false
 	get_node("CanvasLayer/Mine").visible = false
 
+# warning-ignore:unused_argument
 func visible_panel_for_units_info(SELF):
-	
 	pass
 
+
+
+func _on_Exit_pressed():
+	get_tree().quit()

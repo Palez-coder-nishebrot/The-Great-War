@@ -25,3 +25,7 @@ func spawn_button_for_country():
 func START(TEXT):
 	get_node("/root/Global").for_start = TEXT
 	get_tree().change_scene("res://scn/Game.tscn")
+
+
+func _on_Button4_pressed():
+	get_tree().quit()
