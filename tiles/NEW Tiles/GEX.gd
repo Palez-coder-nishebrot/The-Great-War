@@ -61,21 +61,22 @@ func _on_Timer_timeout():
 	build_now = false
 	get_node("Timer").stop()
 	
-func build_graphics(build, build_array):
+func build_graphics(build_, build_array):
 	var size = build_array.size()
-	if build == "factory":
+	if build_ == "factory":
 		spawn_picture(load("res://Sprites/2020_08_05_080506.png"), size)
-	elif build == "farm":
+	elif build_ == "farm":
 		spawn_picture(load("res://Sprites/ferma.png"), size)
 	else:
 		spawn_picture(load("res://Sprites/fabric2.png"), size)
 		
-func spawn_picture(build, size):
+func spawn_picture(build_, size):
 	var obj = load("res://Objects/SPRT.tscn").instance()
 	if size == 1:
 		obj.position = Vector2(-3, -1)
 	else:
 		obj.position = Vector2(1, 1)
 	obj.scale = Vector2(0.05, 0.05)
-	obj.texture = build
+	obj.texture = build_
 	add_child(obj)
+

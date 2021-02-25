@@ -1,9 +1,9 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://Fonts/Oswald-VariableFont_wght.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://GUI/Check_unit.gd" type="Script" id=2]
 [ext_resource path="res://Sprites/fon.png" type="Texture" id=3]
-[ext_resource path="res://Buttons/Button.gd" type="Script" id=4]
+[ext_resource path="res://Sprites/Exit.png" type="Texture" id=5]
 
 [sub_resource type="DynamicFont" id=1]
 font_data = ExtResource( 1 )
@@ -35,11 +35,15 @@ font_data = ExtResource( 1 )
 [sub_resource type="DynamicFont" id=10]
 font_data = ExtResource( 1 )
 
+[sub_resource type="DynamicFont" id=11]
+font_data = ExtResource( 1 )
+
 [node name="Check_unit" type="Node2D"]
 script = ExtResource( 2 )
 
 [node name="fon" type="Sprite" parent="."]
-scale = Vector2( 10.022, 18.043 )
+position = Vector2( 0, -11.3591 )
+scale = Vector2( 10.022, 16.6699 )
 texture = ExtResource( 3 )
 
 [node name="Label" type="Label" parent="."]
@@ -53,23 +57,12 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Label2" type="Label" parent="."]
-margin_left = -80.1761
-margin_top = -114.0
-margin_right = 79.8239
-margin_bottom = -89.0
-custom_fonts/font = SubResource( 2 )
-text = "Количество:"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
 [node name="pod2" type="Button" parent="."]
-margin_left = -80.0
-margin_top = 113.765
-margin_right = 80.0
-margin_bottom = 144.765
-custom_fonts/font = SubResource( 3 )
+margin_left = -80.1761
+margin_top = 91.0003
+margin_right = 79.8239
+margin_bottom = 122.0
+custom_fonts/font = SubResource( 2 )
 text = "Оружие для поддержки"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -77,10 +70,10 @@ __meta__ = {
 
 [node name="pod" type="Button" parent="."]
 margin_left = -80.1761
-margin_top = 82.9877
+margin_top = 60.0
 margin_right = 79.8239
-margin_bottom = 113.988
-custom_fonts/font = SubResource( 4 )
+margin_bottom = 91.0003
+custom_fonts/font = SubResource( 3 )
 text = "Оружие для поддержки"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -88,10 +81,10 @@ __meta__ = {
 
 [node name="weapon" type="Button" parent="."]
 margin_left = -80.0
-margin_top = 51.0
+margin_top = 29.0
 margin_right = 80.0
-margin_bottom = 82.0
-custom_fonts/font = SubResource( 5 )
+margin_bottom = 60.0
+custom_fonts/font = SubResource( 4 )
 text = "Основное оружие"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -99,21 +92,21 @@ __meta__ = {
 
 [node name="ammo2" type="Button" parent="."]
 margin_left = -80.1761
-margin_top = 20.0
+margin_top = -2.0
 margin_right = 79.8239
-margin_bottom = 51.0
-custom_fonts/font = SubResource( 6 )
+margin_bottom = 29.0
+custom_fonts/font = SubResource( 5 )
 text = "Боеприпасы"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="ammo1" type="Button" parent="."]
-margin_left = -80.0
-margin_top = -11.0
-margin_right = 80.0
-margin_bottom = 20.0
-custom_fonts/font = SubResource( 7 )
+margin_left = -80.1761
+margin_top = -33.0
+margin_right = 79.8239
+margin_bottom = -2.0
+custom_fonts/font = SubResource( 6 )
 text = "Боеприпасы"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -124,7 +117,7 @@ margin_left = -80.0
 margin_top = -89.0
 margin_right = 80.0
 margin_bottom = -64.0
-custom_fonts/font = SubResource( 8 )
+custom_fonts/font = SubResource( 7 )
 text = "Урон:"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -132,23 +125,45 @@ __meta__ = {
 
 [node name="hp" type="Label" parent="."]
 margin_left = -80.0
-margin_top = -64.0
+margin_top = -113.344
 margin_right = 80.0
-margin_bottom = -42.0
-custom_fonts/font = SubResource( 9 )
+margin_bottom = -88.3439
+custom_fonts/font = SubResource( 8 )
 text = "Живучесть:"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Button" type="Button" parent="."]
-visible = false
-margin_left = 88.1995
-margin_top = -139.0
-margin_right = 248.199
-margin_bottom = -108.0
+[node name="podd" type="Button" parent="."]
+margin_left = -80.0
+margin_top = -64.0
+margin_right = 80.0
+margin_bottom = -33.0
+custom_fonts/font = SubResource( 9 )
+text = "Поддержка"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="tech" type="Button" parent="."]
+margin_left = -80.0
+margin_top = 122.0
+margin_right = 80.0
+margin_bottom = 153.0
 custom_fonts/font = SubResource( 10 )
-script = ExtResource( 4 )
+text = "Техника"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="exit" type="Button" parent="."]
+margin_left = 48.5
+margin_top = -144.344
+margin_right = 80.5
+margin_bottom = -113.344
+custom_fonts/font = SubResource( 11 )
+icon = ExtResource( 5 )
+flat = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -157,4 +172,6 @@ __meta__ = {
 [connection signal="pressed" from="weapon" to="." method="_on_weapon_pressed"]
 [connection signal="pressed" from="ammo2" to="." method="_on_ammo2_pressed"]
 [connection signal="pressed" from="ammo1" to="." method="_on_ammo1_pressed"]
-[connection signal="pressed" from="Button" to="Button" method="_on_Button_pressed"]
+[connection signal="pressed" from="podd" to="." method="_on_podd_pressed"]
+[connection signal="pressed" from="tech" to="." method="_on_tech_pressed"]
+[connection signal="pressed" from="exit" to="." method="_on_exit_pressed"]

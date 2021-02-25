@@ -4,18 +4,20 @@
 [ext_resource path="res://tiles/NEW Tiles/GEX.gd" type="Script" id=2]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 4.60004, 4.12592 )
+extents = Vector2( 5.05359, 4.91445 )
 
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 5.85508, 5.79028 )
 
 [node name="Sprite" type="StaticBody2D"]
 scale = Vector2( 10, 10 )
-collision_layer = 2
-collision_mask = 2147483650
+collision_layer = 524291
+collision_mask = 524291
 script = ExtResource( 2 )
 
 [node name="Area2D" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource( 1 )
@@ -27,6 +29,7 @@ texture = ExtResource( 1 )
 [node name="Timer" type="Timer" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( -0.0471916, 0.14158 )
 shape = SubResource( 2 )
 [connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_Area2D_body_exited"]

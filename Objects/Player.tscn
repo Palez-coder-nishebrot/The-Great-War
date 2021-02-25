@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=2]
+[gd_scene load_steps=27 format=2]
 
 [ext_resource path="res://Objects/Player.gd" type="Script" id=1]
 [ext_resource path="res://GUI/Check_unit.tscn" type="PackedScene" id=2]
@@ -47,6 +47,24 @@ font_data = ExtResource( 9 )
 [sub_resource type="DynamicFont" id=13]
 font_data = ExtResource( 9 )
 
+[sub_resource type="DynamicFont" id=14]
+font_data = ExtResource( 9 )
+
+[sub_resource type="DynamicFont" id=15]
+font_data = ExtResource( 9 )
+
+[sub_resource type="DynamicFont" id=16]
+font_data = ExtResource( 9 )
+
+[sub_resource type="DynamicFont" id=17]
+font_data = ExtResource( 9 )
+
+[sub_resource type="DynamicFont" id=18]
+font_data = ExtResource( 9 )
+
+[sub_resource type="DynamicFont" id=19]
+font_data = ExtResource( 9 )
+
 [node name="Player ZN" type="Node2D"]
 z_index = 1
 script = ExtResource( 1 )
@@ -62,75 +80,89 @@ texture = ExtResource( 7 )
 anchor_left = 0.009
 anchor_right = 0.075
 anchor_bottom = 0.009
-margin_left = -10.9903
-margin_right = -10.4703
-margin_bottom = 6.8
+margin_left = -16.672
+margin_right = 9.39999
+margin_bottom = 17.8
+custom_fonts/font = SubResource( 1 )
 text = "bruh"
+align = 1
+valign = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="population" type="Label" parent="CanvasLayer"]
-margin_left = 0.529732
-margin_top = 16.0
-margin_right = 85.5297
-margin_bottom = 30.0
+margin_left = -4.0
+margin_top = 32.0
+margin_right = 115.0
+margin_bottom = 57.0
+custom_fonts/font = SubResource( 2 )
 text = "bruh"
+align = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="name" type="Label" parent="CanvasLayer"]
-margin_top = 32.0
-margin_right = 85.0
-margin_bottom = 46.0
+margin_left = -4.0
+margin_top = 16.0
+margin_right = 115.0
+margin_bottom = 41.0
+custom_fonts/font = SubResource( 3 )
 text = "bruh"
+align = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="PartOf" type="Label" parent="CanvasLayer"]
-margin_left = 0.529732
-margin_top = 48.0
-margin_right = 60.5297
-margin_bottom = 62.0
+margin_left = -3.5
+margin_top = 64.0
+margin_right = 114.5
+margin_bottom = 89.0
+custom_fonts/font = SubResource( 4 )
 text = "bruh"
+align = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="building1" type="Button" parent="CanvasLayer"]
-margin_top = 80.0
-margin_right = 119.0
-margin_bottom = 108.0
-custom_fonts/font = SubResource( 1 )
+margin_left = -3.5
+margin_top = 176.0
+margin_right = 115.5
+margin_bottom = 207.0
+custom_fonts/font = SubResource( 5 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="building2" type="Button" parent="CanvasLayer"]
-margin_top = 108.0
-margin_right = 119.0
-margin_bottom = 136.0
-custom_fonts/font = SubResource( 2 )
+margin_left = -4.0
+margin_top = 208.0
+margin_right = 115.0
+margin_bottom = 239.0
+custom_fonts/font = SubResource( 6 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="building3" type="Button" parent="CanvasLayer"]
-margin_top = 136.0
-margin_right = 119.0
-margin_bottom = 164.0
-custom_fonts/font = SubResource( 3 )
+margin_left = -3.5
+margin_top = 240.0
+margin_right = 115.5
+margin_bottom = 271.0
+custom_fonts/font = SubResource( 7 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="building4" type="Button" parent="CanvasLayer"]
-margin_top = 164.0
-margin_right = 119.0
-margin_bottom = 192.0
-custom_fonts/font = SubResource( 4 )
+margin_left = -4.0
+margin_top = 272.0
+margin_right = 115.0
+margin_bottom = 303.0
+custom_fonts/font = SubResource( 8 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -143,14 +175,14 @@ margin_left = 120.0
 margin_top = 3.34584
 margin_right = 230.0
 margin_bottom = 35.3458
-custom_fonts/font = SubResource( 5 )
+custom_fonts/font = SubResource( 9 )
 text = "исследование"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="ResearchMENU" parent="CanvasLayer" instance=ExtResource( 4 )]
-position = Vector2( 936, 40 )
+position = Vector2( 928, 48 )
 scale = Vector2( 1.5, 1.5 )
 
 [node name="build_Factory" type="Button" parent="CanvasLayer"]
@@ -158,7 +190,7 @@ margin_left = 1.0297
 margin_top = 770.15
 margin_right = 120.03
 margin_bottom = 805.15
-custom_fonts/font = SubResource( 6 )
+custom_fonts/font = SubResource( 10 )
 text = "Военная фабрика"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -169,7 +201,7 @@ margin_left = 0.529732
 margin_top = 641.095
 margin_right = 119.53
 margin_bottom = 672.095
-custom_fonts/font = SubResource( 7 )
+custom_fonts/font = SubResource( 11 )
 text = "Казармы"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -180,7 +212,7 @@ margin_left = 1.0297
 margin_top = 701.15
 margin_right = 120.03
 margin_bottom = 739.15
-custom_fonts/font = SubResource( 8 )
+custom_fonts/font = SubResource( 12 )
 text = "Завод"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -191,16 +223,20 @@ margin_left = 0.529732
 margin_top = 739.15
 margin_right = 119.53
 margin_bottom = 770.15
-custom_fonts/font = SubResource( 9 )
+custom_fonts/font = SubResource( 13 )
 text = "Ферма"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Tipe" type="Label" parent="CanvasLayer"]
-margin_top = 65.0
-margin_right = 64.0
-margin_bottom = 79.0
+margin_left = -3.5
+margin_top = 48.0
+margin_right = 115.5
+margin_bottom = 73.0
+custom_fonts/font = SubResource( 14 )
+text = "bruh"
+align = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -210,7 +246,7 @@ margin_left = 0.529732
 margin_top = 610.095
 margin_right = 120.53
 margin_bottom = 641.095
-custom_fonts/font = SubResource( 10 )
+custom_fonts/font = SubResource( 15 )
 text = "Нефтяные вышки"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -221,17 +257,19 @@ margin_left = 0.529732
 margin_top = 671.725
 margin_right = 119.53
 margin_bottom = 702.725
-custom_fonts/font = SubResource( 11 )
+custom_fonts/font = SubResource( 16 )
 text = "Угольная шахта"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Country" type="Button" parent="CanvasLayer"]
-margin_left = 1.0297
-margin_top = 216.0
-margin_right = 119.03
-margin_bottom = 250.0
+margin_left = -3.5
+margin_top = 424.0
+margin_right = 114.5
+margin_bottom = 458.0
+custom_fonts/font = SubResource( 17 )
+text = "Партии"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -242,7 +280,7 @@ margin_left = 552.0
 margin_top = 352.0
 margin_right = 808.0
 margin_bottom = 416.0
-custom_fonts/font = SubResource( 12 )
+custom_fonts/font = SubResource( 18 )
 text = "Выход"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -250,10 +288,10 @@ __meta__ = {
 
 [node name="time" type="Label" parent="CanvasLayer"]
 margin_left = -4.0
-margin_top = 264.0
+margin_top = 472.0
 margin_right = 116.0
-margin_bottom = 360.0
-custom_fonts/font = SubResource( 13 )
+margin_bottom = 568.0
+custom_fonts/font = SubResource( 19 )
 text = "День: 1
 Месяц: Январь
 Год: 1918"
@@ -263,16 +301,15 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="Check_unit" parent="CanvasLayer" instance=ExtResource( 2 )]
+position = Vector2( 360, 144 )
+
+[node name="Country_Info" parent="CanvasLayer" instance=ExtResource( 5 )]
+position = Vector2( 1104, 671.725 )
+
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2( 704, 400 )
 current = true
-
-[node name="Check_unit" parent="." instance=ExtResource( 2 )]
-visible = false
-position = Vector2( 345.009, 139.774 )
-
-[node name="Country_Info" parent="." instance=ExtResource( 5 )]
-position = Vector2( 456, 472 )
 [connection signal="pressed" from="CanvasLayer/building1" to="." method="_on_building1_pressed"]
 [connection signal="pressed" from="CanvasLayer/building2" to="." method="_on_building2_pressed"]
 [connection signal="pressed" from="CanvasLayer/building3" to="." method="_on_building3_pressed"]

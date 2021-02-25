@@ -1,44 +1,89 @@
 extends Node2D
 
-var weapon = "None"
-var dop_weapon = null
-var ammo = null
+var array_of_buttons = []
 onready var weapon_podd_list = get_node("/root/Global")
+var SELF 
+var what_the_button_click
+var name_button 
 
-#var players_ammo = get_parent().warehouse_of_ammo.get("ammo_for_gun")
-#var players_whizzbang = get_parent().warehouse_of_ammo.get("whizzbang")
-#var players_weapon = get_parent().warehouse_of_weapon
 
-func _ready():
-	get_node("weapon").connect("pressed", self, "_weapon")
-	get_node("ammo1").connect("pressed", self, "_ammo")
-	get_node("ammo2").connect("pressed", self, "_ammo")
-	get_node("pod").connect("pressed", self, "weapon_for_podd")
-	get_node("pod2").connect("pressed", self, "weapon_for_podd")
+func _on_weapon_pressed():
+	name_button = "weapon"
+	func_for_spawn_button(get_parent().get_parent().warehouse_of_weapon)
+	what_the_button_click = "weapon"
 
-func weapon_for_podd():
-	pass
-func _weapon():
+func func_for_spawn_button(warehouse):
+	for i in array_of_buttons:
+		i.queue_free()
+	array_of_buttons.clear()
 	var pos = Vector2(100, -30)
-	for i in get_parent().warehouse_of_weapon:
-		spawn_button(pos, i)
-		pos.y += 31
+	for i in warehouse:
+		if warehouse[i] > 0:
+			spawn_button(pos, i)
+			pos.y += 31
 	pos.y += 31
-	spawn_button(pos, weapon)
-	pass
-
-func _ammo():
-	pass
 
 func spawn_button(pos, text):
-	var obj = get_node("Button").duplicate()
+	var obj = load("res://Buttons/Button_for_check_unit.tscn").instance()
 	obj.rect_position = pos
 	obj.rect_size = Vector2(130, 31)
 	obj.text = text
 	obj.visible = true
-	obj.connect("pressed", self, "On_button_pressed")
+	obj.connect("click", self, "On_button_pressed")
 	add_child(obj)
+	array_of_buttons.append(obj)
 
-func On_button_pressed():
-	print("here")
+func On_button_pressed(Text):
+	for i in get_node("/root/ListWeaponsTech").tipe_of_objects:
+		if i == Text:
+			SELF.append_obj_for_inventory(Text, what_the_button_click, name_button)
+			break
+		else:
+			SELF.append_obj_for_inventory(Text, "tech", name_button)
+			break
+	print(Text)
 
+func check_unit(_SELF, hp, attak, weapon, weapon_for_podd1, weapon_for_podd2, ammo1, ammo2, tech, podd):
+	SELF = _SELF
+	visible = true
+	$hp.text = str(hp)
+	$Attak.text = str(attak)
+	$weapon.text = weapon
+	$ammo1.text = ammo1
+	$ammo2.text = ammo2
+	$tech.text = tech
+	$pod.text = weapon_for_podd1
+	$pod2.text = weapon_for_podd2
+	$podd.text = podd
+func _on_exit_pressed():
+	visible = false
+
+func _on_podd_pressed():
+	name_button = "podd"
+	func_for_spawn_button(get_parent().get_parent().warehouse_of_podd)
+	what_the_button_click = "podd"
+	
+func _on_ammo1_pressed():
+	name_button = "ammo1"
+	func_for_spawn_button(get_parent().get_parent().warehouse_of_ammo)
+	what_the_button_click = "ammo"
+
+func _on_ammo2_pressed():
+	name_button = "ammo2"
+	func_for_spawn_button(get_parent().get_parent().warehouse_of_ammo)
+	what_the_button_click = "ammo"
+	
+func _on_pod_pressed():
+	name_button = "weapon_podd1"
+	func_for_spawn_button(get_parent().get_parent().warehouse_of_weapon_for_podd)
+	what_the_button_click = "weapon_for_podd"
+
+func _on_pod2_pressed():
+	name_button = "weapon_podd2"
+	func_for_spawn_button(get_parent().get_parent().warehouse_of_weapon_for_podd)
+	what_the_button_click = "weapon_for_podd"
+
+func _on_tech_pressed():
+	name_button = "tech"
+	func_for_spawn_button(get_parent().get_parent().warehouse_of_tech)
+	what_the_button_click = "tech"

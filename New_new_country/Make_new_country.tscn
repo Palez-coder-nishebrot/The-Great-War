@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://New_new_country/Make_new_country.gd" type="Script" id=1]
+
+[node name="Make_new_country" type="Node"]
+script = ExtResource( 1 )

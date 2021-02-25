@@ -19,37 +19,37 @@ font_data = ExtResource( 3 )
 [sub_resource type="DynamicFont" id=5]
 font_data = ExtResource( 3 )
 
-[sub_resource type="DynamicFont" id=12]
+[sub_resource type="DynamicFont" id=6]
 font_data = ExtResource( 3 )
 
-[sub_resource type="DynamicFont" id=13]
+[sub_resource type="DynamicFont" id=7]
 font_data = ExtResource( 3 )
 
-[sub_resource type="DynamicFont" id=14]
+[sub_resource type="DynamicFont" id=8]
 font_data = ExtResource( 3 )
 
-[sub_resource type="DynamicFont" id=15]
+[sub_resource type="DynamicFont" id=9]
 font_data = ExtResource( 3 )
+
+[sub_resource type="DynamicFont" id=10]
+font_data = ExtResource( 3 )
+
+[sub_resource type="RectangleShape2D" id=11]
+extents = Vector2( 46.969, 10.7935 )
+
+[sub_resource type="RectangleShape2D" id=12]
+extents = Vector2( 54.147, 10.0764 )
+
+[sub_resource type="RectangleShape2D" id=13]
+extents = Vector2( 46.504, 10 )
+
+[sub_resource type="RectangleShape2D" id=14]
+extents = Vector2( 45.961, 10 )
+
+[sub_resource type="RectangleShape2D" id=15]
+extents = Vector2( 39.164, 10.6342 )
 
 [sub_resource type="DynamicFont" id=16]
-font_data = ExtResource( 3 )
-
-[sub_resource type="RectangleShape2D" id=6]
-extents = Vector2( 59.5173, 10.7935 )
-
-[sub_resource type="RectangleShape2D" id=7]
-extents = Vector2( 59.9864, 10.0764 )
-
-[sub_resource type="RectangleShape2D" id=8]
-extents = Vector2( 67.3425, 10 )
-
-[sub_resource type="RectangleShape2D" id=9]
-extents = Vector2( 58.6719, 10 )
-
-[sub_resource type="RectangleShape2D" id=10]
-extents = Vector2( 58.3085, 10.6342 )
-
-[sub_resource type="DynamicFont" id=11]
 font_data = ExtResource( 3 )
 
 [node name="Research" type="Node2D"]
@@ -133,7 +133,7 @@ margin_left = -322.378
 margin_top = -9.0
 margin_right = -202.378
 margin_bottom = 29.0
-custom_fonts/font = SubResource( 12 )
+custom_fonts/font = SubResource( 6 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -143,7 +143,7 @@ margin_left = -194.378
 margin_top = -9.0
 margin_right = -74.3784
 margin_bottom = 29.0
-custom_fonts/font = SubResource( 13 )
+custom_fonts/font = SubResource( 7 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -153,7 +153,7 @@ margin_left = -66.3784
 margin_top = -9.0
 margin_right = 63.6216
 margin_bottom = 29.0
-custom_fonts/font = SubResource( 14 )
+custom_fonts/font = SubResource( 8 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -163,7 +163,7 @@ margin_left = 69.6216
 margin_top = -9.0
 margin_right = 189.622
 margin_bottom = 29.0
-custom_fonts/font = SubResource( 15 )
+custom_fonts/font = SubResource( 9 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -173,7 +173,7 @@ margin_left = 197.622
 margin_top = -9.0
 margin_right = 317.622
 margin_bottom = 29.0
-custom_fonts/font = SubResource( 16 )
+custom_fonts/font = SubResource( 10 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -188,38 +188,38 @@ z_index = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="tank_area"]
 position = Vector2( -262.969, -19.9564 )
-shape = SubResource( 6 )
+shape = SubResource( 11 )
 
 [node name="armored car_area" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="armored car_area"]
 position = Vector2( -134.147, -20.5455 )
-shape = SubResource( 7 )
+shape = SubResource( 12 )
 
 [node name="motorized infantry_area" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="motorized infantry_area"]
 position = Vector2( -2.37842, -20.5455 )
-shape = SubResource( 8 )
+shape = SubResource( 13 )
 
 [node name="infantry_area" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="infantry_area"]
 position = Vector2( 130.039, -20.5455 )
-shape = SubResource( 9 )
+shape = SubResource( 14 )
 
 [node name="aerial _tech_area" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="aerial _tech_area"]
 position = Vector2( 256.836, -20.5455 )
-shape = SubResource( 10 )
+shape = SubResource( 15 )
 
 [node name="Label2" type="Label" parent="."]
 margin_left = -321.0
 margin_top = 71.0
 margin_right = 318.0
 margin_bottom = 213.0
-custom_fonts/font = SubResource( 11 )
+custom_fonts/font = SubResource( 16 )
 text = "БРУХ"
 __meta__ = {
 "_edit_use_anchors_": false

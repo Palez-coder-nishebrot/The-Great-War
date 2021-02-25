@@ -7,7 +7,7 @@ var time_of_game = {
 "month": 1,
 "year": 1918
 }
-
+var object_in_mouse_area = null
 var month_list = ["Январь", "Февраль", "Март", "Апрель", "Май", "Июнь", "Июль", "Август", "Сентябрь", "Октябрь", "Ноябрь", "Декабрь"]
 signal city_spawn(obj)
 signal timeout
@@ -18,6 +18,8 @@ func _process(_delta):
 			get_node("Time_of_game").paused = true
 		else:
 			get_node("Time_of_game").paused = false
+			
+	get_node("mouse").position = get_global_mouse_position()
 func _ready():
 	spawnCity(Vector2(407, 215), 'a', 140, 'country', 'Adamanty', "none")
 	spawnCity(Vector2(794, 263), 'b', 140, 'country', 'Tsarstvo Bascany', "none")
@@ -48,14 +50,14 @@ func set_parties():
 	var tk = 6
 	var party = get_node("/root/Global").parties_for_randi
 	for i in tk:
-		var r = rand_range(1, 12)
+		var r = rand_range(1, 14)
 		r = int(r)
 		var p = party.get(r)
 		if p in party:
 			print("hehe :)")
 			tk += 1
 		else:
-			get_node("Player").parties[i] = [p[0], p[1]]
+			get_node("Player").parties[i] = [p[0], p[1], 10]
 func spawnCity(pos, NameF, populationF, Tipe, PartOf, build):
 	var obj = City.instance()
 	obj.position = pos
@@ -99,3 +101,6 @@ func _on_Time_of_game_timeout():
 	var year = str(time_of_game["year"])
 	get_node("Player/CanvasLayer/time").text = "День: " + day + "\n Месяц: " + month + "\n Год: " + year
 		
+func _on_mouse_body_entered(body):
+	if body.BODY == "TILE":
+		object_in_mouse_area = body.partOf

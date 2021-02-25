@@ -1,9 +1,11 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://tiles/NEW Tiles/NEW tile.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Objects/Player.tscn" type="PackedScene" id=2]
 [ext_resource path="res://scn/Game.gd" type="Script" id=3]
 [ext_resource path="res://tiles/K.png" type="Texture" id=4]
+
+[sub_resource type="RectangleShape2D" id=1]
 
 [node name="Game" type="Node2D"]
 script = ExtResource( 3 )
@@ -67,6 +69,14 @@ wait_time = 0.001
 [node name="Time_of_game" type="Timer" parent="."]
 wait_time = 3.5
 autostart = true
+
+[node name="mouse" type="Area2D" parent="."]
+collision_layer = 7
+collision_mask = 7
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="mouse"]
+position = Vector2( 0, -0.000518799 )
+shape = SubResource( 1 )
 [connection signal="body_entered" from="CZ" to="." method="_on_CZ_body_entered"]
 [connection signal="body_entered" from="BEREG" to="." method="_on_BEREG_body_entered"]
 [connection signal="body_entered" from="PROT" to="." method="_on_PROT_body_entered"]
@@ -74,3 +84,4 @@ autostart = true
 [connection signal="body_entered" from="RESP" to="." method="_on_RESP_body_entered"]
 [connection signal="timeout" from="Timer_fo_tiles" to="." method="_on_Timer_fo_tiles_timeout"]
 [connection signal="timeout" from="Time_of_game" to="." method="_on_Time_of_game_timeout"]
+[connection signal="body_entered" from="mouse" to="." method="_on_mouse_body_entered"]

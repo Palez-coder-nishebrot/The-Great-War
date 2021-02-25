@@ -3,7 +3,6 @@ extends Node2D
 ######################################################################
 var POS = null
 var UNIT = null
-var OBJ = null
 var strike = null
 var tension = 10
 var what_we_make = null
@@ -22,15 +21,20 @@ var timer = load("res://timer/Sleep.tscn")
 var unit = load("res://Units/Unit.tscn")
 var build_building = null
 
+var warehouse_of_weapon_for_podd = {
+"Артиллерия": 1
+}
 var warehouse_of_weapon = {
-"Nivel's gun": 12,
-"first aid kit": 12,
-"trench knife": 10
+"Винтовка Токарева": 12,
 }
 
+var warehouse_of_podd = {
+"Аптечка": 12,
+"Саперская лопата": 10
+}
 var warehouse_of_ammo = {
-"ammo_for_gun": 30,
-"whizzbang": 50, #сняряд 
+"Патроны": 30,
+"Снаряды": 50, #сняряд 
 }
 var warehouse_of_res = {
 "Резина": 10,
@@ -39,30 +43,36 @@ var warehouse_of_res = {
 "Уголь": 10,
 "Нефть": 10
 }
-
+var warehouse_of_tech = {
+"Грузовик": 4,
+"Зенитка": 3,
+"Танк": 3
+}
 var research_TECH = {
-"anti_air_track": [5, 3, 0, 1, 2, "бронемашины"],
-"tank": [12, 3, 0, 1, 2, "танки"],
+"Зенитка": [5, 3, 0, 1, 2, "бронемашины"],
+"Танк": [12, 3, 0, 1, 2, "танки"],
+"Грузовик": [0,0,0, 1, 2, "М пехота"]
 }
 var research_infantry = {
-"infantry": [1, 3, 0, 1, 2]
+"Пехота": [1, 3, 0, 1, 2]
 }
 ###########################################################
 ###########################################################
 #1 ВРЕМЯ, РЕСУРСЫ:, Сталь, Пшеница,Топливо, Резина
 ###########################################################
 ###########################################################
+#1 Время, Металлы, Другое
 var research_for_ammunition_depot = {
-"Nivel's gun": [3, 2, 1],
-"first aid kit": [3, 0, 2],
-"ammo_for_gun": [3, 1, 1],
-"whizzbang": [3, 2, 2], #сняряд
-"trench knife": [3, 1, 1]
+"Винтовка Токарева": [3, 2, 1],
+"Аптечка": [3, 0, 2],
+"Патроны": [3, 1, 1],
+"Снаряды": [3, 2, 2], #сняряд
+"Саперская лопата": [3, 1, 1],
+"Артиллерия": [4, 4, 0],
 }
 
 ########################################################################################
 ###########################################################################################
-#1 Время, Металлы, Другое
 var pos_of_city = null
 
 var ARRAY_OF_OPEN_BUTTONS = []
@@ -78,12 +88,13 @@ var objectForBuild = null
 var party_members = []
 var party = {}
 var parties = {}
-var wars = []
+
+#####################################
+####################################
 func _ready():
+	#parties[i] = [p[0], p[1], 10]
 	zoom_camera_start_game()
-# warning-ignore:return_value_discarded
 	get_parent().connect("city_spawn", self, "connect_signal_to_city")
-# warning-ignore:return_value_discarded
 	get_parent().get_node("NEW tile").connect("new_tile", self, "connect_signal_to_tile")
 	get_node("CanvasLayer/var1").visible = false
 	get_node("CanvasLayer/Factory_for_other").visible = false
@@ -263,19 +274,15 @@ func build_product_or_unit(TEXT):
 		if i == TEXT: #######ПОСТРОЙКА ТЕХНИКИ##################
 			POS = Vector2(pos_of_city.x - 50, pos_of_city.y)
 			UNIT = i
-			OBJ = i
 			spawn_timer("tech")
 			break
 	for i in research_for_ammunition_depot: #######СОЗДАНИЕ ОРУЖИЯ И ПАТРОНОВ##################
 		if i == TEXT:
-			OBJ = i
 			UNIT = i
-			warehouse_of_weapon[i] += 1
-			break
+			spawn_timer(i)
 	for i in research_infantry:
 		if i == TEXT:
 			POS = Vector2(pos_of_city.x - 50, pos_of_city.y)
-			OBJ = i
 			UNIT = i
 			spawn_timer("infantry")
 			break
@@ -285,16 +292,14 @@ func _on_var1_BUILD(TEXT):
 func spawn_timer(tipeOfUnit):
 	var obj = timer.instance()
 	obj.tipe = tipeOfUnit
+	obj.unit = UNIT
 	add_child(obj)
-	obj.connect("END", self, "spawn_unit")
 	
-func spawn_unit(tipe):
+func spawn_unit():
 	var obj = unit.instance()
 	obj.position = POS
 	obj.part_of = part_of_player
-	obj.tipe_of_unit = tipe
 	obj.unit = UNIT
-	obj.connect("on_unit_click", self, "visible_panel_for_units_info")
 	get_parent().add_child(obj)
 
 func _on_Oil_station_pressed():
@@ -341,11 +346,6 @@ func open():
 	get_node("CanvasLayer/Oil_station").visible = false
 	get_node("CanvasLayer/Mine").visible = false
 
-# warning-ignore:unused_argument
-func visible_panel_for_units_info(SELF):
-	pass
-
-
-
 func _on_Exit_pressed():
 	get_tree().quit()
+
