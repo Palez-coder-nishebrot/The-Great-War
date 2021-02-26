@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=2]
+[gd_scene load_steps=28 format=2]
 
 [ext_resource path="res://Objects/Player.gd" type="Script" id=1]
 [ext_resource path="res://GUI/Check_unit.tscn" type="PackedScene" id=2]
@@ -65,6 +65,9 @@ font_data = ExtResource( 9 )
 [sub_resource type="DynamicFont" id=19]
 font_data = ExtResource( 9 )
 
+[sub_resource type="DynamicFont" id=20]
+font_data = ExtResource( 9 )
+
 [node name="Player ZN" type="Node2D"]
 z_index = 1
 script = ExtResource( 1 )
@@ -80,9 +83,10 @@ texture = ExtResource( 7 )
 anchor_left = 0.009
 anchor_right = 0.075
 anchor_bottom = 0.009
-margin_left = -16.672
-margin_right = 9.39999
-margin_bottom = 17.8
+margin_left = -16.172
+margin_top = 56.0
+margin_right = 9.89999
+margin_bottom = 73.8
 custom_fonts/font = SubResource( 1 )
 text = "bruh"
 align = 1
@@ -92,10 +96,10 @@ __meta__ = {
 }
 
 [node name="population" type="Label" parent="CanvasLayer"]
-margin_left = -4.0
-margin_top = 32.0
-margin_right = 115.0
-margin_bottom = 57.0
+margin_left = -3.5
+margin_top = 88.0
+margin_right = 115.5
+margin_bottom = 113.0
 custom_fonts/font = SubResource( 2 )
 text = "bruh"
 align = 1
@@ -104,10 +108,10 @@ __meta__ = {
 }
 
 [node name="name" type="Label" parent="CanvasLayer"]
-margin_left = -4.0
-margin_top = 16.0
-margin_right = 115.0
-margin_bottom = 41.0
+margin_left = -3.5
+margin_top = 72.0
+margin_right = 115.5
+margin_bottom = 97.0
 custom_fonts/font = SubResource( 3 )
 text = "bruh"
 align = 1
@@ -117,9 +121,9 @@ __meta__ = {
 
 [node name="PartOf" type="Label" parent="CanvasLayer"]
 margin_left = -3.5
-margin_top = 64.0
+margin_top = 120.0
 margin_right = 114.5
-margin_bottom = 89.0
+margin_bottom = 145.0
 custom_fonts/font = SubResource( 4 )
 text = "bruh"
 align = 1
@@ -168,20 +172,20 @@ __meta__ = {
 }
 
 [node name="var1" parent="CanvasLayer" instance=ExtResource( 3 )]
-position = Vector2( 139.735, 770.15 )
+position = Vector2( 115.483, 329 )
 
 [node name="Research" type="Button" parent="CanvasLayer"]
-margin_left = 120.0
-margin_top = 3.34584
-margin_right = 230.0
-margin_bottom = 35.3458
+margin_left = -3.5
+margin_right = 106.5
+margin_bottom = 32.0
 custom_fonts/font = SubResource( 9 )
-text = "исследование"
+text = "Исследование"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="ResearchMENU" parent="CanvasLayer" instance=ExtResource( 4 )]
+visible = false
 position = Vector2( 928, 48 )
 scale = Vector2( 1.5, 1.5 )
 
@@ -231,9 +235,9 @@ __meta__ = {
 
 [node name="Tipe" type="Label" parent="CanvasLayer"]
 margin_left = -3.5
-margin_top = 48.0
+margin_top = 104.0
 margin_right = 115.5
-margin_bottom = 73.0
+margin_bottom = 129.0
 custom_fonts/font = SubResource( 14 )
 text = "bruh"
 align = 1
@@ -264,10 +268,10 @@ __meta__ = {
 }
 
 [node name="Country" type="Button" parent="CanvasLayer"]
-margin_left = -3.5
-margin_top = 424.0
-margin_right = 114.5
-margin_bottom = 458.0
+margin_left = 104.778
+margin_top = -0.000518799
+margin_right = 222.778
+margin_bottom = 31.9995
 custom_fonts/font = SubResource( 17 )
 text = "Партии"
 __meta__ = {
@@ -302,10 +306,21 @@ __meta__ = {
 }
 
 [node name="Check_unit" parent="CanvasLayer" instance=ExtResource( 2 )]
-position = Vector2( 360, 144 )
+position = Vector2( 195.66, 176 )
 
 [node name="Country_Info" parent="CanvasLayer" instance=ExtResource( 5 )]
-position = Vector2( 1104, 671.725 )
+visible = false
+position = Vector2( 415.235, 162.357 )
+
+[node name="Button" type="Button" parent="CanvasLayer"]
+margin_left = 223.25
+margin_right = 340.25
+margin_bottom = 32.0
+custom_fonts/font = SubResource( 20 )
+text = "Строительство"
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2( 704, 400 )

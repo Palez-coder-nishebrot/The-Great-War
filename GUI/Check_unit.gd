@@ -34,20 +34,14 @@ func spawn_button(pos, text):
 	array_of_buttons.append(obj)
 
 func On_button_pressed(Text):
-	for i in get_node("/root/ListWeaponsTech").tipe_of_objects:
-		if i == Text:
-			SELF.append_obj_for_inventory(Text, what_the_button_click, name_button)
-			break
-		else:
-			SELF.append_obj_for_inventory(Text, "tech", name_button)
-			break
-	print(Text)
-
+	print("Button TEXT")
+	if Text in get_node("/root/ListWeaponsTech").tipe_of_objects:
+		SELF.append_obj_for_inventory(Text, what_the_button_click, name_button)
 func check_unit(_SELF, hp, attak, weapon, weapon_for_podd1, weapon_for_podd2, ammo1, ammo2, tech, podd):
 	SELF = _SELF
 	visible = true
-	$hp.text = str(hp)
-	$Attak.text = str(attak)
+	$hp.text = "Урон: " + str(hp)
+	$Attak.text = "Живучесть: " + str(attak)
 	$weapon.text = weapon
 	$ammo1.text = ammo1
 	$ammo2.text = ammo2
@@ -55,6 +49,7 @@ func check_unit(_SELF, hp, attak, weapon, weapon_for_podd1, weapon_for_podd2, am
 	$pod.text = weapon_for_podd1
 	$pod2.text = weapon_for_podd2
 	$podd.text = podd
+	print(weapon, " ", podd)
 func _on_exit_pressed():
 	visible = false
 

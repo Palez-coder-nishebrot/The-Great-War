@@ -13,7 +13,6 @@ const speed = 12
 const speed_mouse = 15
 
 var TILE_or_CITY_open = [null, null]
-
 var part_of_player = null
 
 var button_for_prod = load("res://Buttons/Button_for_production.tscn")
@@ -22,7 +21,8 @@ var unit = load("res://Units/Unit.tscn")
 var build_building = null
 
 var warehouse_of_weapon_for_podd = {
-"Артиллерия": 1
+"Артиллерия": 1,
+"Саперская лопата": 10
 }
 var warehouse_of_weapon = {
 "Винтовка Токарева": 12,
@@ -30,7 +30,7 @@ var warehouse_of_weapon = {
 
 var warehouse_of_podd = {
 "Аптечка": 12,
-"Саперская лопата": 10
+"Медицинские палаты": 2
 }
 var warehouse_of_ammo = {
 "Патроны": 30,
@@ -211,23 +211,19 @@ func _on_building4_pressed():
 
 func on_button_building_pressed(Tbuilding):
 	clear_button()
+	var plusPos = Vector2(1, 29)
+	var start_pos = get_node("CanvasLayer/var1").position
 	if Tbuilding == 'factory':
-		var start_pos = get_node("CanvasLayer/var1").position
-		var plusPos = Vector2(100, 1)
 		for i in research_TECH:
-			start_pos += Vector2(plusPos.x, 0)
+			start_pos += plusPos
 			spawn_for_prod(start_pos, i)
 	elif Tbuilding == "barak":
-		var start_pos = get_node("CanvasLayer/var1").position
-		var plusPos = Vector2(100, 1)
 		for i in research_infantry:
-			start_pos += Vector2(plusPos.x, 0)
+			start_pos += plusPos
 			spawn_for_prod(start_pos, i)
 	elif Tbuilding == "Factory_for_other":
-		var start_pos = get_node("CanvasLayer/var1").position
-		var plusPos = Vector2(100, 1)
 		for i in research_for_ammunition_depot:
-			start_pos += Vector2(plusPos.x, 0)
+			start_pos += plusPos
 			spawn_for_prod(start_pos, i)
 		pass
 	else:
