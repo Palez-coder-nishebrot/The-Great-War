@@ -1,130 +1,56 @@
 extends Node2D
-####################CITY VARS################################
-######################################################################
-var POS = null
-var UNIT = null
-var strike = null
-var tension = 10
-var what_we_make = null
-var city_object = null
-#########################################################################
-######################################################################
-const speed = 12
-const speed_mouse = 15
 
-var TILE_or_CITY_open = [null, null]
-var part_of_player = null
+var research_tech = { #Сталь, Пшеница,Топливо, Резина, Время
+"Гарфорд Путилов": [1,1,1,1,1],
+"Броненосец":   [1,1,1,1,1],}
+var research_wapon = {
+"Винтовка Токарева": ['weapon', 1,1,1,1,1],
+"Аптечка первой помощи": ['support', 1,1,1,1,1],
+"Артеллерия": ['weapon_support', 1,1,1,1,1],}
+var research_units = {
+"Пехотная дивизия": [1,1,1,1,1],}
+###################### SERVICE ######################
+var arr_of_buttons_var = []
+var city_OBJECT = null
+var part_of
+var arr_for_buttons_to_delete = []
+var arr_of_active_units = []
+###################### SERVICE ######################
 
-var button_for_prod = load("res://Buttons/Button_for_production.tscn")
-var timer = load("res://timer/Sleep.tscn")
-var unit = load("res://Units/Unit.tscn")
-var build_building = null
+###################### WARHOUSES ######################
+var warhouse_of_tech = {}
+var warhouse_of_weapon = {}
+var warhouse_of_support = {}
+var warhouse_of_weapon_support = {}
+###################### WARHOUSES ######################
 
-var warehouse_of_weapon_for_podd = {
-"Артиллерия": 1,
-"Саперская лопата": 10
-}
-var warehouse_of_weapon = {
-"Винтовка Токарева": 12,
-}
+const speed: int = 900
+const speed_mouse: int = 15
 
-var warehouse_of_podd = {
-"Аптечка": 12,
-"Медицинские палаты": 2
-}
-var warehouse_of_ammo = {
-"Патроны": 30,
-"Снаряды": 50, #сняряд 
-}
-var warehouse_of_res = {
-"Резина": 10,
-"Металлы": 10,
-"Пшеница": 10,
-"Уголь": 10,
-"Нефть": 10
-}
-var warehouse_of_tech = {
-"Грузовик": 4,
-"Зенитка": 3,
-"Танк": 3
-}
-var research_TECH = {
-"Зенитка": [5, 3, 0, 1, 2, "бронемашины"],
-"Танк": [12, 3, 0, 1, 2, "танки"],
-"Грузовик": [0,0,0, 1, 2, "М пехота"]
-}
-var research_infantry = {
-"Пехота": [1, 3, 0, 1, 2]
-}
-###########################################################
-###########################################################
-#1 ВРЕМЯ, РЕСУРСЫ:, Сталь, Пшеница,Топливо, Резина
-###########################################################
-###########################################################
-#1 Время, Металлы, Другое
-var research_for_ammunition_depot = {
-"Винтовка Токарева": [3, 2, 1],
-"Аптечка": [3, 0, 2],
-"Патроны": [3, 1, 1],
-"Снаряды": [3, 2, 2], #сняряд
-"Саперская лопата": [3, 1, 1],
-"Артиллерия": [4, 4, 0],
-}
 
-########################################################################################
-###########################################################################################
-var pos_of_city = null
+var economic = {
+"Вид": "Смешанная",
+"Разрешение на постройку государсвтенных сооружений частным компаниям": true,
+"Жетоны рабочих": 4,}
 
-var ARRAY_OF_OPEN_BUTTONS = []
-
-signal Build_building
-signal Build_building_for_tile
-var Name_of_city = null
-var objectForBuild = null
-
-##############################################
-###############ПОЛИТИКА###########################
-
-var party_members = []
-var party = {}
+###################### PARTIES ######################
 var parties = {}
-
-#####################################
-####################################
-func _ready():
-	#parties[i] = [p[0], p[1], 10]
-	zoom_camera_start_game()
-	get_parent().connect("city_spawn", self, "connect_signal_to_city")
-	get_parent().get_node("NEW tile").connect("new_tile", self, "connect_signal_to_tile")
-	get_node("CanvasLayer/var1").visible = false
-	get_node("CanvasLayer/Factory_for_other").visible = false
-	get_node("CanvasLayer/ResearchMENU").visible = false
-	get_node("CanvasLayer/BuildBar").visible = false
-	get_node("CanvasLayer/BuildFarm").visible = false
-	get_node("CanvasLayer/build_Factory").visible = false
-	get_node("CanvasLayer/Oil_station").visible = false
-	get_node("CanvasLayer/Mine").visible = false
-	var token = 1
-	for _i in range(4):
-		var tokenT = str(token)
-		get_node("CanvasLayer/building" + tokenT).visible = false
-		token = token + 1
-func connect_signal_to_city(obj):
-	obj.connect('open', self, 'OPEN')#Если на объект нажали, то
+###################### PARTIES ######################
 func _process(delta):
-	if Input.is_action_just_pressed("ESC"):
-		if get_node("CanvasLayer/Exit").visible == false:
-			get_node("CanvasLayer/Exit").visible = true
-		else:
-			get_node("CanvasLayer/Exit").visible = false
 	if Input.is_action_pressed("ui_down"):
-		position.y += speed
+		position.y += speed * delta
 	if Input.is_action_pressed("ui_up"):
-		position.y -= speed 
+		position.y -= speed * delta
 	if Input.is_action_pressed("ui_left"):
-		position.x -= speed 
+		position.x -= speed * delta
 	if Input.is_action_pressed("ui_right"):
-		position.x += speed
+		position.x += speed * delta
+		
+	if Input.is_action_just_pressed("ESC"):
+		if get_node("CanvasLayer/settings").visible == false:
+			get_node("CanvasLayer/settings").visible = true
+		else:
+			get_node("CanvasLayer/settings").visible = false
 	
 	if Input.is_action_just_released("UP_mouse"):
 		get_node("Camera2D").zoom.x -= speed_mouse * delta
@@ -135,213 +61,103 @@ func _process(delta):
 	if get_node("Camera2D").zoom.x <= 0.5 and get_node("Camera2D").zoom.y <= 0.5:
 		get_node("Camera2D").zoom.x = 0.5
 		get_node("Camera2D").zoom.y = 0.5
-	if get_node("Camera2D").zoom.x >= 1 or get_node("Camera2D").zoom.y >= 1:
-		get_node("Camera2D").zoom.x = 1
-		get_node("Camera2D").zoom.y = 1
-	
-func zoom_camera_start_game():
-	part_of_player = get_node("/root/Global").for_start 
-	get_node("Camera2D").zoom = Vector2(0.5, 0.5)
-	if part_of_player == "Gorny":
-		get_node("Camera2D").position = Vector2(839, 791)
-	elif part_of_player == "Adamanty":
-		get_node("Camera2D").position = Vector2(407, 215)
-	elif part_of_player == "Tsarstvo Bascany":
-		get_node("Camera2D").position = Vector2(794, 263)
-	elif part_of_player == "Nasadry":
-		get_node("Camera2D").position = Vector2(262, 503)
+	if get_node("Camera2D").zoom.x >= 2 or get_node("Camera2D").zoom.y >= 2:
+		get_node("Camera2D").zoom.x = 2
+		get_node("Camera2D").zoom.y = 2
+func _visible(boolean, number):
+	if number == 1:
+		get_node("CanvasLayer/open_build0").visible = boolean
+		get_node("CanvasLayer/open_build1").visible = boolean
+		get_node("CanvasLayer/open_build2").visible = boolean
+		get_node("CanvasLayer/open_build3").visible = boolean
 	else:
-		get_node("Camera2D").position = Vector2(1175, 551)
-func OPEN(population, tipe, object, Name, build, partOf, pos, STRIKE, SELF):
-	open() #обработчик невидимости кнопок
-	TILE_or_CITY_open[1] = "City" #мы открыли город
-	city_object = null
-	strike = null
-	pos_of_city = null #позиция города
-	clear_button() #обработчки невидимости кнопок для производства
-	build_building = null
-	var token = 1
-	for _i in range(3): #с помощью нехитрого цикла делаем невидимым кнопки для постройки фабрик итд
-		var tokenT = str(token)
-		get_node("CanvasLayer/building" + tokenT).visible = false
-		token = token + 1
-	get_node("CanvasLayer/population").set_text("")
-	get_node("CanvasLayer/object").set_text(object)
-	get_node("CanvasLayer/name").set_text(Name)
-	get_node("CanvasLayer/PartOf").set_text(partOf)
-	get_node("CanvasLayer/Tipe").set_text(tipe)
-	if partOf == part_of_player: #если это наш город
-		var populationForGR = str(population)
-		get_node("CanvasLayer/population").set_text(populationForGR)
-		get_node("CanvasLayer/Factory_for_other").visible = true
-		get_node("CanvasLayer/BuildBar").visible = true
-		get_node("CanvasLayer/BuildFarm").visible = true
-		get_node("CanvasLayer/build_Factory").visible = true
-		get_node("CanvasLayer/Oil_station").visible = true
-		get_node("CanvasLayer/Mine").visible = true
-		control(build)
-		#занимаемся сохранением данных о городе в переменную 
-		build_building = build
-		Name_of_city = Name
-		pos_of_city = pos
-		strike = STRIKE
-		city_object = SELF
-		TILE_or_CITY_open[0] = city_object
-
-func control(build):
-	var token = 1
-	for i in build:
-		var tokent = str(token)
-		get_node("CanvasLayer/building" + tokent).visible = true
-		get_node("CanvasLayer/building" + tokent).text = i
-		token = token + 1
-
-func _on_building1_pressed():
-	var Tbuilding = get_node("CanvasLayer/building1").text
-	on_button_building_pressed(Tbuilding)
-func _on_building2_pressed():
-	var Tbuilding = get_node("CanvasLayer/building2").text
-	on_button_building_pressed(Tbuilding)
-func _on_building3_pressed():
-	var Tbuilding = get_node("CanvasLayer/building3").text
-	on_button_building_pressed(Tbuilding)
-func _on_building4_pressed():
-	var Tbuilding = get_node("CanvasLayer/building4").text
-	on_button_building_pressed(Tbuilding)
-
-func on_button_building_pressed(Tbuilding):
-	clear_button()
-	var plusPos = Vector2(1, 29)
-	var start_pos = get_node("CanvasLayer/var1").position
-	if Tbuilding == 'factory':
-		for i in research_TECH:
-			start_pos += plusPos
-			spawn_for_prod(start_pos, i)
-	elif Tbuilding == "barak":
-		for i in research_infantry:
-			start_pos += plusPos
-			spawn_for_prod(start_pos, i)
-	elif Tbuilding == "Factory_for_other":
-		for i in research_for_ammunition_depot:
-			start_pos += plusPos
-			spawn_for_prod(start_pos, i)
-		pass
-	else:
-		print("Ферма нажата")
-func clear_button():
-	for i in ARRAY_OF_OPEN_BUTTONS:
+		get_node("CanvasLayer/build_building").visible = boolean
+		get_node("CanvasLayer/build_building2").visible = boolean
+		get_node("CanvasLayer/build_building3").visible = boolean
+		get_node("CanvasLayer/build_building4").visible = boolean
+		get_node("CanvasLayer/build_building5").visible = boolean
+		get_node("CanvasLayer/build_building6").visible = boolean
+		get_node("CanvasLayer/build_building7").visible = boolean
+func _ready():
+	part_of = get_node("/root/Global").start_contry_for_player
+	get_node("/root/Global").countries[part_of] = [get_node("/root/Global").countries[part_of][0],self]
+	set_tokens_of_workers()
+	get_node("/root/Global").player_self = self
+	_visible(false, 1)
+	_visible(false, 2)
+func open(big_city_or_usually_city, buildings, object):
+	for i in arr_for_buttons_to_delete:
 		if i != null:
 			i.queue_free()
-
-func spawn_for_prod(pos, TextForButton):
-	var obj = button_for_prod.instance()
-	obj.connect("BUILD", self, "build_product_or_unit")
-	obj.position = pos
-	obj.get_node("Button").text = TextForButton
-	ARRAY_OF_OPEN_BUTTONS.append(obj)
-	get_node("CanvasLayer").add_child(obj)
-
-func _on_Research_pressed():
-	if get_node("CanvasLayer/ResearchMENU").visible == false:
-		get_node("CanvasLayer/ResearchMENU").visible = true
+	print('open')
+	city_OBJECT = object
+	_visible(false, 2)
+	_visible(false, 1)
+	var tk = -1
+	for i in buildings:
+		tk = tk + 1
+		var c = str(tk)
+		get_node("CanvasLayer/open_build" + c).visible = true
+		get_node("CanvasLayer/open_build" + c).text = i[0]
+		get_node("CanvasLayer/open_build" + c).factory_obj = i[1]
+	if city_OBJECT.part_of == part_of:
+		_visible(true, 2)
 	else:
-		get_node("CanvasLayer/ResearchMENU").visible = false
-func _on_build_Factory_pressed(): #FACTORY
-	objectForBuild = "factory"
-	Build()
-func _on_BuildBar_pressed(): #BARAK
-	objectForBuild = "barak"
-	Build()
-func _on_BuildFarm_pressed(): #FARM
-	objectForBuild = "farm"
-	Build()
-func _on_Factory_for_other_pressed():
-	objectForBuild = "Factory_for_other"
-	Build()
-func Build():
-	if TILE_or_CITY_open[1] == "City":
-		emit_signal("Build_building", Name_of_city, objectForBuild)
+		_visible(false, 2)
+	print(big_city_or_usually_city)
+func _on_build_building_pressed(): # ФАБРИКА
+	city_OBJECT.append_building(load("res://Objects/Buildings/Factory.tscn").instance())
+func _on_build_building2_pressed(): # ВОЕННЫЙ ЗАВОД
+	city_OBJECT.append_building(load("res://Objects/Buildings/Army_factory.tscn").instance())
+func _on_build_building3_pressed(): # ФЕРМА
+	city_OBJECT.append_building(load("res://Objects/Buildings/Farm.tscn").instance())
+func _on_build_building6_pressed(): # КАЗАРМЫ
+	city_OBJECT.append_building(load("res://Objects/Buildings/Bar-s.tscn").instance())
+func set_tokens_of_workers():
+	get_node("CanvasLayer/Label").text = "Жетоны рабочих:" + str(economic.get("Жетоны рабочих"))
+	pass
+func on_button_var_pressed(text_of_button, factory_obj):
+	if text_of_button == "Военный завод":
+		spawn_buttons_for_arm_factory('arm_factory', factory_obj)
+	elif text_of_button == "Казармы":
+		spawn_buttons_for_arm_factory('bar', factory_obj)
+		pass
+	elif text_of_button == "Фабрика":
+		spawn_buttons_for_arm_factory('factory', factory_obj)
+		pass
+	else: #"Ферма"
+		
+		pass
+func spawn_buttons_for_arm_factory(tipe, factory_obj):
+	var object
+	var research 
+	for i in arr_of_buttons_var:
+		i.queue_free()
+	var pos = get_node("CanvasLayer/Products_or_unit").rect_position
+	if tipe == 'factory':
+		object = 'product'
+		research = research_wapon
+	elif tipe == 'bar':
+		object = 'units'
+		research = research_units
 	else:
-		emit_signal("Build_building_for_tile", objectForBuild, TILE_or_CITY_open[0])
+		object = 'tech'
+		research = research_tech
+	for i in research:
+		var obj = load("res://Buttons/var_for_create_product.tscn").instance()
+		print(i)
+		obj.tech_or_product = object 
+		obj.rect_position = pos
+		obj.text = i
+		obj.tile = city_OBJECT
+		obj.factory_obj = factory_obj
+		arr_for_buttons_to_delete.append(obj)
+		get_node("CanvasLayer").add_child(obj)
+		pos.y += 32
 
-func build_product_or_unit(TEXT):
-	print('on button click')
-	for i in research_TECH: 
-		if i == TEXT: #######ПОСТРОЙКА ТЕХНИКИ##################
-			POS = Vector2(pos_of_city.x - 50, pos_of_city.y)
-			UNIT = i
-			spawn_timer("tech")
-			break
-	for i in research_for_ammunition_depot: #######СОЗДАНИЕ ОРУЖИЯ И ПАТРОНОВ##################
-		if i == TEXT:
-			UNIT = i
-			spawn_timer(i)
-	for i in research_infantry:
-		if i == TEXT:
-			POS = Vector2(pos_of_city.x - 50, pos_of_city.y)
-			UNIT = i
-			spawn_timer("infantry")
-			break
-func _on_var1_BUILD(TEXT):
-	build_product_or_unit(TEXT)
-	
-func spawn_timer(tipeOfUnit):
-	var obj = timer.instance()
-	obj.tipe = tipeOfUnit
-	obj.unit = UNIT
-	add_child(obj)
-	
-func spawn_unit():
-	var obj = unit.instance()
-	obj.position = POS
-	obj.part_of = part_of_player
-	obj.unit = UNIT
-	get_parent().add_child(obj)
 
-func _on_Oil_station_pressed():
-	if TILE_or_CITY_open[0].Oil != 1:
-		TILE_or_CITY_open[0].Oil += 1
-		print("build oil")
-
-func _on_Mine_pressed():
-	if TILE_or_CITY_open[0].Mines != 1:
-		TILE_or_CITY_open[0].Mines += 1
-		print("build mine")
-
-func connect_signal_to_tile(SELF):
-	SELF.connect("open_tile", self, "open_tile_signal")
-
-func open_tile_signal(population, _Name, build, partOf, SELF, pos):
-	open()
-	pos_of_city = pos
-	TILE_or_CITY_open[1] = "tile"
-	clear_button()
-	var token = 1
-	for _i in range(4):
-		var tokenT = str(token)
-		get_node("CanvasLayer/building" + tokenT).visible = false
-		token = token + 1
-	if partOf == part_of_player:
-		var populationForGR = str(population)
-		get_node("CanvasLayer/population").set_text(populationForGR)
-		get_node("CanvasLayer/Factory_for_other").visible = true
-		get_node("CanvasLayer/BuildFarm").visible = true
-		get_node("CanvasLayer/build_Factory").visible = true
-		get_node("CanvasLayer/Oil_station").visible = true
-		get_node("CanvasLayer/Mine").visible = true
-		TILE_or_CITY_open[0] = SELF
-		control(build)
-
-func open():
-	get_node("CanvasLayer/BuildBar").visible = false
-	get_node("CanvasLayer/BuildFarm").visible = false
-	get_node("CanvasLayer/build_Factory").visible = false
-	get_node("CanvasLayer/var1/Button").text = ""
-	get_node("CanvasLayer/var1").visible = false
-	get_node("CanvasLayer/Factory_for_other").visible = false
-	get_node("CanvasLayer/Oil_station").visible = false
-	get_node("CanvasLayer/Mine").visible = false
-
-func _on_Exit_pressed():
-	get_tree().quit()
-
+func _on_Parties_pressed():
+	if get_node("CanvasLayer/Parties2").visible == false:
+		get_node("CanvasLayer/Parties2").visible = true
+	else:
+		get_node("CanvasLayer/Parties2").visible = false

@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Buttons/var_for_create_product.gd" type="Script" id=1]
+[ext_resource path="res://Graphics/Fonts/Oswald-VariableFont_wght.ttf" type="DynamicFontData" id=2]
+
+[sub_resource type="DynamicFont" id=1]
+font_data = ExtResource( 2 )
+
+[node name="var_for_create_product" type="Button"]
+margin_right = 120.0
+margin_bottom = 32.0
+custom_fonts/font = SubResource( 1 )
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="pressed" from="." to="." method="_on_var_for_create_product_pressed"]
