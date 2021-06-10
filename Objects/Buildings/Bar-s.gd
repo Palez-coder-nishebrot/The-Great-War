@@ -1,22 +1,32 @@
 extends Node
 
 var char_c = "Строится"
-var timer_var = null
 const tipe = "Казармы"
-var number = null
-func start():
-	build_bar()
+var finish_data
+var unit 
+func start() -> void:
+	Global.connect('new_day_timer', self, 'check_day')
+	finish_data = Global.schedule_date(5)
+		
+func check_day(dict) -> void:
+	if finish_data['day'] == dict['day'] and finish_data['month'] == dict['month'] and finish_data['year'] == dict['year']:
+		char_c = 'Готово к работе'
+		get_parent().return_tk()
+		print('FINISH')
+		$"/root/Global".disconnect('new_day_timer', self, 'check_day')
 
-func build_bar():
-	var obj = Timer.new()
-	obj.connect("timeout", self, '_on_Timer_timeout')
-	obj.autostart = true
-	obj.one_shot = true
-	add_child(obj)
-	timer_var = obj
+func Mobilization(unit_):
+	finish_data = Global.schedule_date(2)
+	Global.connect('new_day_timer', self, 'ProcessOfMobilization')
+	unit = unit_
 
-func _on_Timer_timeout():
-	char_c = 'Готово к работе'
-	get_node("/root/Global").player_self.economic["Жетоны рабочих"] = get_node("/root/Global").player_self.economic["Жетоны рабочих"] + 1
-	get_node("/root/Global").player_self.set_tokens_of_workers()
-	timer_var.queue_free()
+func ProcessOfMobilization(dict):
+	if finish_data['day'] == dict['day'] and finish_data['month'] == dict['month'] and finish_data['year'] == dict['year']:
+		var unit_obj = load("res://Objects/units/Unit.tscn").instance()
+		unit_obj.tipe_of_unit = unit
+		unit_obj.tile = get_parent()
+		unit_obj.position = get_parent().position
+		unit_obj.part_of = get_parent().part_of
+		get_parent().get_parent().add_child(unit_obj)
+		PlayersObj.playersObj.get(get_parent().part_of)[1].power_points += 1
+		PlayersObj.playersObj.get(get_parent().part_of)[1].arr_of_units.append(unit_obj)

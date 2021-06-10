@@ -1,22 +1,16 @@
 extends Node
 
 var char_c = "Строится"
-const tipe = "Ферма"
-var timer_var = null
-var number = null
-func start():
-	build_farm()
+const tipe = "Колхоз"
+func start() -> void:
+	$"/root/Global".connect('new_day_timer', self, 'check_day')
+	finish_data = $"/root/Global".schedule_date(5)
 
-func build_farm():
-	var obj = Timer.new()
-	obj.connect("timeout", self, '_on_Timer_timeout')
-	obj.autostart = true
-	obj.one_shot = true
-	add_child(obj)
-	timer_var = obj
-
-func _on_Timer_timeout():
-	char_c = 'Готово к работе'
-	get_node("/root/Global").player_self.economic["Жетоны рабочих"] = get_node("/root/Global").player_self.economic["Жетоны рабочих"] + 1
-	get_node("/root/Global").player_self.set_tokens_of_workers()
-	timer_var.queue_free()
+var finish_data
+		
+func check_day(dict) -> void:
+	if finish_data['day'] == dict['day'] and finish_data['month'] == dict['month'] and finish_data['year'] == dict['year']:
+		char_c = 'Готово к работе'
+		get_parent().return_tk()
+		print('FINISH')
+		$"/root/Global".disconnect('new_day_timer', self, 'check_day')

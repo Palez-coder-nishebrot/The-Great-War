@@ -8,11 +8,6 @@
 
 config_version=4
 
-_global_script_classes=[  ]
-_global_script_class_icons={
-
-}
-
 [application]
 
 config/name="The Great War"
@@ -21,11 +16,20 @@ config/icon="res://icon.png"
 
 [autoload]
 
-Global="*res://Graphics/Global/Global.gd"
-DataBase="*res://Graphics/Global/Data_base.gd"
+DataBase="*res://Objects/Global/Data_base.gd"
+Ideologies="*res://Objects/Parties window/Ideologies.gd"
+TileMapReg="*res://Objects/Global/TileMap.gd"
+Global="*res://Objects/Global/Global.gd"
+PlayersObj="*res://Objects/Global/PlayersObj.gd"
+Relations="*res://Objects/Global/Relations.gd"
+Focuses="*res://Objects/Global/Focuses.gd"
+SolutionsGlobal="*res://Objects/Solutions/SolutionsGlobal.gd"
+DataBaseResearch="*res://Objects/Global/DataBaseResearch.gd"
 
 [display]
 
+window/size/width=1920
+window/size/height=1080
 window/stretch/mode="2d"
 window/stretch/aspect="keep"
 
@@ -112,7 +116,8 @@ mouse_right_button={
 "events": [ Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":-1,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"button_mask":0,"position":Vector2( 0, 0 ),"global_position":Vector2( 0, 0 ),"factor":1.0,"button_index":2,"pressed":false,"doubleclick":false,"script":null)
  ]
 }
-
-[rendering]
-
-environment/default_environment="res://default_env.tres"
+CheatCode_Input={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777255,"unicode":0,"echo":false,"script":null)
+ ]
+}

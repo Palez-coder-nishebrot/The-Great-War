@@ -1,23 +1,38 @@
 extends Node
 
-var timer_var = null
 var char_c = "Строится"
-const tipe = "Военный завод"
-var number = null
-func start():
-	build_Army_factory()
+const tipe = "Завод тяжелой промышленности"
+var finish_data
+var product
+var disconnect = true
+func start() -> void:
+	Global.connect('new_day_timer', self, 'check_day')
+	finish_data = Global.schedule_date(5)
+		
+func check_day(dict) -> void:
+	if finish_data['day'] == dict['day'] and finish_data['month'] == dict['month'] and finish_data['year'] == dict['year']:
+		char_c = 'Готово к работе'
+		get_parent().return_tk()
+		Global.disconnect('new_day_timer', self, 'check_day')
 
-func build_Army_factory():
-	var obj = Timer.new()
-	obj.connect("timeout", self, '_on_Timer_timeout')
-	obj.autostart = true
-	obj.one_shot = true
-	add_child(obj)
-	timer_var = obj
-
-func _on_Timer_timeout():
-	print('bruh')
-	char_c = 'Готово к работе'
-	get_node("/root/Global").player_self.economic["Жетоны рабочих"] = get_node("/root/Global").player_self.economic["Жетоны рабочих"] + 1
-	get_node("/root/Global").player_self.set_tokens_of_workers()
-	timer_var.queue_free()
+func MakeTech(tech):
+	if disconnect == true:
+		Global.connect('new_day_timer', self, 'CheckData')
+		
+	product = tech
+	finish_data = Global.schedule_date(2)
+func CheckData(dict):
+	if PlayersObj.PlayerObject.resources["Уголь"] != 0:
+		PlayersObj.PlayerObject.resources["Уголь"] -= 1
+		if finish_data['day'] == dict['day'] and finish_data['month'] == dict['month'] and finish_data['year'] == dict['year']:
+			if product in PlayersObj.playersObj.get(get_parent().part_of)[1].warhouse_of_tech:
+				PlayersObj.playersObj.get(get_parent().part_of)[1].warhouse_of_tech[product] += 1
+			else:
+				PlayersObj.playersObj.get(get_parent().part_of)[1].warhouse_of_tech[product] = 1
+		else:
+			finish_data = Global.schedule_date(2)
+			print(product, ' делается...')
+	else:
+		disconnect('new_day_timer', self, 'check_day')
+		
+	

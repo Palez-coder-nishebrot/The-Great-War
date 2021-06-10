@@ -1,50 +1,12 @@
 [gd_scene load_steps=4 format=2]
 
-[ext_resource path="res://Objects/Player.tscn" type="PackedScene" id=1]
-[ext_resource path="res://SCN/Game.gd" type="Script" id=2]
-[ext_resource path="res://Graphics/K.png" type="Texture" id=3]
+[ext_resource path="res://Objects/Player/Player.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Objects/Tilemap/TileMap.tscn" type="PackedScene" id=2]
+[ext_resource path="res://SCN/Game.gd" type="Script" id=3]
 
 [node name="Game" type="Node2D"]
-script = ExtResource( 2 )
+script = ExtResource( 3 )
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
-position = Vector2( 712, 296 )
 
-[node name="K" type="Sprite" parent="."]
-position = Vector2( 1311.7, 1102.57 )
-scale = Vector2( 40.0957, 39.9237 )
-texture = ExtResource( 3 )
-
-[node name="Nasardy" type="Area2D" parent="."]
-
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Nasardy"]
-polygon = PoolVector2Array( 952.649, 2282.5, 833.728, 1578.49, 438.912, 1007.67, 348.532, 727.022, 486.48, 531.992, 995.46, 536.749, 1423.57, 1064.76, 1556.77, 1302.6, 1494.93, 1716.44, 1509.2, 2301.53 )
-
-[node name="Gorny" type="Area2D" parent="."]
-
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Gorny"]
-polygon = PoolVector2Array( 2513.28, 2289.38, 2509.91, 1505.67, 1541.2, 1512.39, 1541.2, 2299.47 )
-
-[node name="Bascany" type="Area2D" parent="."]
-
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Bascany"]
-polygon = PoolVector2Array( 2513.34, 1481.57, 2515.85, 642.467, 1215.62, 652.546, 1603.67, 1274.95, 1611.23, 1486.61 )
-
-[node name="Tsarstvo_Bascany" type="Area2D" parent="."]
-
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Tsarstvo_Bascany"]
-polygon = PoolVector2Array( 2514.98, -90.2113, 2511.62, 616.142, 1697.63, 609.414, 1690.9, -93.5749 )
-
-[node name="Adamanty" type="Area2D" parent="."]
-
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Adamanty"]
-polygon = PoolVector2Array( 319.866, -100.143, 1672.25, -93.0154, 1649.09, 609.013, 1121.67, 617.922, 984.476, 507.45, 620.99, 477.16 )
-
-[node name="Timer" type="Timer" parent="."]
-autostart = true
-[connection signal="body_entered" from="Nasardy" to="." method="_on_Area2D_body_entered"]
-[connection signal="body_entered" from="Gorny" to="." method="_on_Gorny_body_entered"]
-[connection signal="body_entered" from="Bascany" to="." method="_on_Bascany_body_entered"]
-[connection signal="body_entered" from="Tsarstvo_Bascany" to="." method="_on_Tsarstvo_Bascany_body_entered"]
-[connection signal="body_entered" from="Adamanty" to="." method="_on_Adamanty_body_entered"]
-[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
+[node name="TileMap" parent="." instance=ExtResource( 2 )]
