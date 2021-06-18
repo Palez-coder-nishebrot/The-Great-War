@@ -1,0 +1,130 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Graphics/Fonts/Oswald-VariableFont_wght.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://Buttons/Button_research.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Objects/researh/Tech.gd" type="Script" id=8]
+
+[sub_resource type="DynamicFont" id=1]
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=2]
+font_data = ExtResource( 2 )
+
+[node name="Tech" type="Node2D"]
+position = Vector2( 1.27779, 1.35561 )
+script = ExtResource( 8 )
+
+[node name="cars" type="Button" parent="."]
+margin_top = -39.0
+margin_right = 189.0
+margin_bottom = -2.0
+custom_fonts/font = SubResource( 1 )
+text = "Броневики"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="tanks" type="Button" parent="."]
+margin_left = 331.0
+margin_top = -39.0
+margin_right = 519.0
+margin_bottom = -2.0
+custom_fonts/font = SubResource( 1 )
+text = "Танки"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="1level_cars" type="Node2D" parent="."]
+
+[node name="Машина с пулеметом" parent="1level_cars" instance=ExtResource( 3 )]
+margin_left = 3.8147e-06
+margin_right = 750.0
+margin_bottom = 375.0
+
+[node name="Первый Броневик Путилова" parent="1level_cars/Машина с пулеметом" instance=ExtResource( 3 )]
+margin_left = -9.53674e-06
+margin_top = 300.0
+margin_right = 750.0
+margin_bottom = 675.0
+rect_scale = Vector2( 1, 1 )
+
+[node name="Броневик Путилова" parent="1level_cars/Машина с пулеметом/Первый Броневик Путилова" instance=ExtResource( 3 )]
+margin_top = 375.0
+margin_right = 750.0
+margin_bottom = 750.0
+rect_scale = Vector2( 1, 1 )
+
+[node name="2level_cars" type="Node2D" parent="."]
+
+[node name="Морской Броневик Путилова" parent="2level_cars" instance=ExtResource( 3 )]
+margin_left = 300.0
+margin_top = 2.51984
+margin_right = 1050.0
+margin_bottom = 377.52
+
+[node name="Броневик Лупковского" parent="2level_cars/Морской Броневик Путилова" instance=ExtResource( 3 )]
+margin_top = 293.7
+margin_right = 750.0
+margin_bottom = 668.7
+rect_scale = Vector2( 1, 1 )
+
+[node name="Морской Броневик Лупковского" parent="2level_cars/Морской Броневик Путилова/Броневик Лупковского" instance=ExtResource( 3 )]
+margin_left = 34.6478
+margin_top = 375.0
+margin_right = 784.648
+margin_bottom = 750.0
+rect_scale = Vector2( 1, 1 )
+
+[node name="1level_tanks" type="Node2D" parent="."]
+
+[node name="Разработка Двигателя" parent="1level_tanks" instance=ExtResource( 3 )]
+margin_left = 613.859
+margin_top = 3.05176e-05
+margin_right = 1363.86
+margin_bottom = 375.0
+
+[node name="Разработка Корпуса" parent="1level_tanks" instance=ExtResource( 3 )]
+margin_left = 613.859
+margin_top = 160.0
+margin_right = 1363.86
+margin_bottom = 535.0
+
+[node name="Легкий Танк Вездеход" parent="1level_tanks" instance=ExtResource( 3 )]
+margin_left = 629.416
+margin_top = 310.0
+margin_right = 1379.42
+margin_bottom = 685.0
+
+[node name="Средний Танк Галиция" parent="1level_tanks" instance=ExtResource( 3 )]
+margin_left = 629.416
+margin_top = 460.0
+margin_right = 1379.42
+margin_bottom = 835.0
+
+[node name="Тяжелый Танк Шевченко" parent="1level_tanks" instance=ExtResource( 3 )]
+margin_left = 629.416
+margin_top = 610.0
+margin_right = 1379.42
+margin_bottom = 985.0
+
+[node name="Газовый Тяжелый Танк Шевченко" parent="1level_tanks" instance=ExtResource( 3 )]
+margin_left = 629.416
+margin_top = 760.0
+margin_right = 1379.42
+margin_bottom = 1135.0
+
+[node name="cars_left_right" type="Button" parent="."]
+margin_left = 189.0
+margin_top = -39.0
+margin_right = 331.0
+margin_bottom = -2.0
+custom_fonts/font = SubResource( 2 )
+text = "<-->"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[connection signal="pressed" from="cars" to="." method="_on_Button2_pressed"]
+[connection signal="pressed" from="tanks" to="." method="_on_Button8_pressed"]
+[connection signal="pressed" from="cars_left_right" to="." method="_on_cars_left_right_pressed"]

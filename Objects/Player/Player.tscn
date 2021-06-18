@@ -1,0 +1,299 @@
+[gd_scene load_steps=21 format=2]
+
+[ext_resource path="res://Objects/Player/Player.gd" type="Script" id=1]
+[ext_resource path="res://Graphics/Sprites/panel.png" type="Texture" id=2]
+[ext_resource path="res://Graphics/Fonts/Oswald-VariableFont_wght.ttf" type="DynamicFontData" id=3]
+[ext_resource path="res://Buttons/var_for_buildings.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Objects/Solutions/Solutions.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Objects/Parties window/Parties_windows.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Objects/equipment/equipment.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Objects/researh/Research.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Buttons/var_for_create_product.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Objects/Country_info/Country_info.tscn" type="PackedScene" id=10]
+[ext_resource path="res://Objects/National Focuses/National Focuses.tscn" type="PackedScene" id=13]
+
+[sub_resource type="DynamicFont" id=1]
+size = 21
+font_data = ExtResource( 3 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 21
+font_data = ExtResource( 3 )
+
+[sub_resource type="DynamicFont" id=3]
+size = 21
+font_data = ExtResource( 3 )
+
+[sub_resource type="DynamicFont" id=4]
+size = 21
+font_data = ExtResource( 3 )
+
+[sub_resource type="DynamicFont" id=5]
+size = 21
+font_data = ExtResource( 3 )
+
+[sub_resource type="DynamicFont" id=6]
+size = 21
+font_data = ExtResource( 3 )
+
+[sub_resource type="DynamicFont" id=7]
+size = 21
+font_data = ExtResource( 3 )
+
+[sub_resource type="DynamicFont" id=8]
+size = 21
+font_data = ExtResource( 3 )
+
+[sub_resource type="DynamicFont" id=9]
+size = 21
+font_data = ExtResource( 3 )
+
+[node name="Player" type="Node2D"]
+script = ExtResource( 1 )
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Label" type="Label" parent="CanvasLayer"]
+margin_left = 594.801
+margin_top = -2.98484
+margin_right = 913.798
+margin_bottom = 102.015
+custom_fonts/font = SubResource( 1 )
+text = "Единицы производственной мощи:"
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label2" type="Label" parent="CanvasLayer"]
+margin_left = 913.798
+margin_top = -4.46015
+margin_right = 1118.8
+margin_bottom = 100.54
+custom_fonts/font = SubResource( 1 )
+text = "Казна:"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="time" type="Label" parent="CanvasLayer"]
+margin_left = 1716.0
+margin_top = -2.0
+margin_right = 1918.0
+margin_bottom = 96.0
+custom_fonts/font = SubResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="build_building" type="Button" parent="CanvasLayer"]
+margin_left = 1611.18
+margin_top = 948.919
+margin_right = 1919.18
+margin_bottom = 1029.92
+custom_fonts/font = SubResource( 3 )
+text = "Завод легкой промышленности"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="build_building2" type="Button" parent="CanvasLayer"]
+margin_left = 1611.18
+margin_top = 866.584
+margin_right = 1919.18
+margin_bottom = 947.584
+custom_fonts/font = SubResource( 4 )
+text = "Завод тяжелой промышленности"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="build_building3" type="Button" parent="CanvasLayer"]
+margin_left = 1305.18
+margin_top = 947.584
+margin_right = 1613.18
+margin_bottom = 1028.58
+custom_fonts/font = SubResource( 5 )
+text = "Колхоз"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="build_building6" type="Button" parent="CanvasLayer"]
+margin_left = 1305.18
+margin_top = 866.584
+margin_right = 1613.18
+margin_bottom = 947.585
+custom_fonts/font = SubResource( 6 )
+text = "Казармы"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="build_building8" type="Button" parent="CanvasLayer"]
+margin_left = 1460.69
+margin_top = 785.267
+margin_right = 1766.69
+margin_bottom = 866.267
+custom_fonts/font = SubResource( 7 )
+text = "Рельсы"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="researchButton" type="Button" parent="CanvasLayer"]
+margin_left = 145.905
+margin_top = -3.5393
+margin_right = 293.905
+margin_bottom = 101.461
+custom_fonts/font = SubResource( 8 )
+text = "Исследования"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Nation FocusesButton" type="Button" parent="CanvasLayer"]
+margin_left = 441.904
+margin_top = -4.46015
+margin_right = 589.904
+margin_bottom = 100.54
+custom_fonts/font = SubResource( 8 )
+text = "Нац. фокус"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Nation Focuses EconomicButton" type="Button" parent="CanvasLayer"]
+visible = false
+margin_left = 293.905
+margin_top = 101.999
+margin_right = 441.905
+margin_bottom = 150.999
+custom_fonts/font = SubResource( 8 )
+text = "Економика"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Nation Focuses PoliticButton" type="Button" parent="CanvasLayer"]
+visible = false
+margin_left = 441.905
+margin_top = 102.495
+margin_right = 589.905
+margin_bottom = 151.495
+custom_fonts/font = SubResource( 8 )
+text = "Политика"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Nation Focuses ArmyButton" type="Button" parent="CanvasLayer"]
+visible = false
+margin_left = 589.905
+margin_top = 102.495
+margin_right = 737.905
+margin_bottom = 151.495
+custom_fonts/font = SubResource( 8 )
+text = "Армия"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PartiesButton" type="Button" parent="CanvasLayer"]
+margin_left = 293.904
+margin_top = -3.5393
+margin_right = 441.904
+margin_bottom = 101.461
+custom_fonts/font = SubResource( 9 )
+text = "Партии"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Country_infoButton" type="Button" parent="CanvasLayer"]
+margin_left = -1.0
+margin_top = -2.98484
+margin_right = 147.0
+margin_bottom = 102.015
+custom_fonts/font = SubResource( 9 )
+text = "Страна"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Sprite" type="Sprite" parent="CanvasLayer"]
+position = Vector2( 959.112, 51.2477 )
+scale = Vector2( 19.1121, 0.341651 )
+z_index = -1
+texture = ExtResource( 2 )
+
+[node name="open_build0" parent="CanvasLayer" instance=ExtResource( 4 )]
+margin_left = 263.49
+margin_top = 866.584
+margin_right = 523.49
+margin_bottom = 947.584
+
+[node name="open_build1" parent="CanvasLayer" instance=ExtResource( 4 )]
+margin_top = 867.0
+margin_right = 263.0
+margin_bottom = 948.0
+
+[node name="open_build2" parent="CanvasLayer" instance=ExtResource( 4 )]
+margin_left = 1.0
+margin_top = 949.0
+margin_right = 263.0
+margin_bottom = 1030.0
+
+[node name="open_build3" parent="CanvasLayer" instance=ExtResource( 4 )]
+margin_left = 263.49
+margin_top = 948.919
+margin_right = 523.49
+margin_bottom = 1029.92
+
+[node name="Parties2" parent="CanvasLayer" instance=ExtResource( 6 )]
+visible = false
+position = Vector2( 1019.04, 507.943 )
+
+[node name="equipment" parent="CanvasLayer" instance=ExtResource( 7 )]
+visible = false
+position = Vector2( 185.798, 382.433 )
+scale = Vector2( 2, 2 )
+
+[node name="Research" parent="CanvasLayer" instance=ExtResource( 8 )]
+visible = false
+position = Vector2( 959.112, 653.289 )
+
+[node name="Country_info" parent="CanvasLayer" instance=ExtResource( 10 )]
+visible = false
+position = Vector2( 103, 382.433 )
+
+[node name="National Focuses Economic" parent="CanvasLayer" instance=ExtResource( 13 )]
+visible = false
+position = Vector2( 960.112, 564.618 )
+
+[node name="Solutions" parent="CanvasLayer" instance=ExtResource( 5 )]
+visible = false
+position = Vector2( 1672.99, 435.943 )
+
+[node name="Products_or_unit" parent="CanvasLayer" instance=ExtResource( 9 )]
+visible = false
+margin_top = 102.495
+margin_bottom = 154.495
+text = "Остановить производство"
+
+[node name="Camera2D" type="Camera2D" parent="."]
+current = true
+zoom = Vector2( 1.5, 1.5 )
+
+[connection signal="pressed" from="CanvasLayer/build_building" to="." method="_on_build_building_pressed"]
+[connection signal="pressed" from="CanvasLayer/build_building2" to="." method="_on_build_building2_pressed"]
+[connection signal="pressed" from="CanvasLayer/build_building3" to="." method="_on_build_building3_pressed"]
+[connection signal="pressed" from="CanvasLayer/build_building6" to="." method="_on_build_building6_pressed"]
+[connection signal="pressed" from="CanvasLayer/build_building8" to="." method="_on_build_building8_pressed"]
+[connection signal="pressed" from="CanvasLayer/researchButton" to="." method="_on_research_pressed"]
+[connection signal="pressed" from="CanvasLayer/Nation FocusesButton" to="." method="_on_Nation_FocusesButton_pressed"]
+[connection signal="pressed" from="CanvasLayer/Nation Focuses EconomicButton" to="." method="_on_Nation_Focuses_EconomicButton_pressed"]
+[connection signal="pressed" from="CanvasLayer/PartiesButton" to="." method="_on_Parties_pressed"]
+[connection signal="pressed" from="CanvasLayer/Country_infoButton" to="." method="_on_Country_infoButton_pressed"]

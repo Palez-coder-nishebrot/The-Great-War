@@ -1,0 +1,157 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Objects/Tilemap/TileMap.gd" type="Script" id=1]
+[ext_resource path="res://Graphics/Безымянный.png" type="Texture" id=2]
+[ext_resource path="res://Objects/City/City.tscn" type="PackedScene" id=3]
+
+[node name="TileMap" type="Node2D"]
+position = Vector2( 0, -1 )
+script = ExtResource( 1 )
+
+[node name="Sprite" type="Sprite" parent="."]
+visible = false
+position = Vector2( 1002.23, 1086.12 )
+scale = Vector2( 3.623, 3.613 )
+texture = ExtResource( 2 )
+
+[node name="Bascaky_Ts" type="Area2D" parent="."]
+monitoring = false
+monitorable = false
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Bascaky_Ts"]
+position = Vector2( 1051.26, 1075.04 )
+polygon = PoolVector2Array( 1132.5, -1068.15, 1125.66, -603.082, 737.656, -443.21, 171.153, -287.823, 376.983, -1070.82 )
+
+[node name="Bascaky_C" type="Area2D" parent="."]
+monitoring = false
+monitorable = false
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Bascaky_C"]
+position = Vector2( 1201.89, 929.184 )
+polygon = PoolVector2Array( 1000.56, -444.189, 994.441, 587.417, 690.385, 571.861, 341.415, 545.094, -366.032, 707.625, -341.167, 262.537, -563.403, 21.252, 596.723, -249.281 )
+
+[node name="Gorny" type="Area2D" parent="."]
+monitoring = false
+monitorable = false
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Gorny"]
+position = Vector2( 1166.32, 1177.19 )
+polygon = PoolVector2Array( 1036.13, 365.61, 1014.49, 1074.64, -66.6249, 1093.79, -339.317, 485.475, 403.844, 329.651 )
+
+[node name="Nasardy" type="Area2D" parent="."]
+monitoring = false
+monitorable = false
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Nasardy"]
+position = Vector2( 1029.37, 1107.42 )
+polygon = PoolVector2Array( -606.847, -365.341, -830.129, -171.259, -818.138, 727.721, 49.0321, 1167.97, -212.45, 554.927, -193.622, 296.677, -186.495, 88.2069 )
+
+[node name="Adamanty" type="Area2D" parent="."]
+monitoring = false
+monitorable = false
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Adamanty"]
+position = Vector2( 1003.87, 1177.67 )
+polygon = PoolVector2Array( -801.01, -1181.46, 373.649, -1178.79, 176.734, -366.044, -377.316, -290.394, -456.621, -319.15 )
+
+[node name="City" parent="." instance=ExtResource( 3 )]
+position = Vector2( 2039.27, 71.0632 )
+
+[node name="City2" parent="." instance=ExtResource( 3 )]
+position = Vector2( 1510.7, 344.787 )
+
+[node name="City3" parent="." instance=ExtResource( 3 )]
+position = Vector2( 1916.57, 439.174 )
+
+[node name="City4" parent="." instance=ExtResource( 3 )]
+position = Vector2( 1554.12, 42.747 )
+
+[node name="City5" parent="." instance=ExtResource( 3 )]
+position = Vector2( 169.298, 71.0632 )
+
+[node name="City6" parent="." instance=ExtResource( 3 )]
+position = Vector2( 570.546, 56.38 )
+
+[node name="City7" parent="." instance=ExtResource( 3 )]
+position = Vector2( 1132.38, 56.38 )
+
+[node name="City8" parent="." instance=ExtResource( 3 )]
+position = Vector2( 907.092, 344.787 )
+
+[node name="City9" parent="." instance=ExtResource( 3 )]
+position = Vector2( 414.369, 344.787 )
+
+[node name="City10" parent="." instance=ExtResource( 3 )]
+position = Vector2( 628.644, 344.787 )
+
+[node name="City11" parent="." instance=ExtResource( 3 )]
+position = Vector2( 1080.32, 483.498 )
+
+[node name="City12" parent="." instance=ExtResource( 3 )]
+position = Vector2( 742.59, 721.34 )
+
+[node name="City13" parent="." instance=ExtResource( 3 )]
+position = Vector2( 2039.27, 842.793 )
+
+[node name="City14" parent="." instance=ExtResource( 3 )]
+position = Vector2( 1380.45, 909.388 )
+
+[node name="City15" parent="." instance=ExtResource( 3 )]
+position = Vector2( 1448.96, 1311.34 )
+
+[node name="City16" parent="." instance=ExtResource( 3 )]
+position = Vector2( 1038.32, 1431.34 )
+
+[node name="City17" parent="." instance=ExtResource( 3 )]
+position = Vector2( 1958.57, 1187.34 )
+
+[node name="City18" parent="." instance=ExtResource( 3 )]
+position = Vector2( 961.794, 983.119 )
+
+[node name="City19" parent="." instance=ExtResource( 3 )]
+position = Vector2( 1916.57, 1638.25 )
+
+[node name="City20" parent="." instance=ExtResource( 3 )]
+position = Vector2( 1958.57, 1801.75 )
+
+[node name="City21" parent="." instance=ExtResource( 3 )]
+position = Vector2( 1706.99, 1839.17 )
+
+[node name="City22" parent="." instance=ExtResource( 3 )]
+position = Vector2( 1660.67, 2075.67 )
+
+[node name="City23" parent="." instance=ExtResource( 3 )]
+position = Vector2( 1297.87, 1858.76 )
+
+[node name="City24" parent="." instance=ExtResource( 3 )]
+position = Vector2( 1274.7, 2118.14 )
+
+[node name="City25" parent="." instance=ExtResource( 3 )]
+position = Vector2( 1448.96, 1704.18 )
+
+[node name="City26" parent="." instance=ExtResource( 3 )]
+position = Vector2( 309.732, 1118.78 )
+
+[node name="City27" parent="." instance=ExtResource( 3 )]
+position = Vector2( 587.899, 1118.78 )
+
+[node name="City28" parent="." instance=ExtResource( 3 )]
+position = Vector2( 414.369, 1577.81 )
+
+[node name="City29" parent="." instance=ExtResource( 3 )]
+position = Vector2( 704.535, 1577.81 )
+
+[node name="City30" parent="." instance=ExtResource( 3 )]
+position = Vector2( 557.074, 1839.17 )
+
+[node name="City31" parent="." instance=ExtResource( 3 )]
+position = Vector2( 961.794, 2118.14 )
+
+[node name="City32" parent="." instance=ExtResource( 3 )]
+position = Vector2( 414.369, 953.268 )
+
+[connection signal="area_entered" from="Bascaky_Ts" to="." method="_on_Bascaky_Ts_area_entered"]
+[connection signal="area_entered" from="Bascaky_C" to="." method="_on_Bascaky_C_area_entered"]
+[connection signal="area_entered" from="Gorny" to="." method="_on_Gorny_area_entered"]
+[connection signal="area_entered" from="Nasardy" to="." method="_on_Nasardy_area_entered"]
+[connection signal="area_entered" from="Adamanty" to="." method="_on_Adamanty_area_entered"]

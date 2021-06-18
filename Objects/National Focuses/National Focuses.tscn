@@ -1,0 +1,39 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Buttons/Focus_button.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Objects/National Focuses/National Focuses.gd" type="Script" id=2]
+[ext_resource path="res://Graphics/Sprites/fon.png" type="Texture" id=3]
+[ext_resource path="res://Objects/National Focuses/Panel_Focus.tscn" type="PackedScene" id=4]
+
+[node name="National Focuses Economic" type="Node2D"]
+script = ExtResource( 2 )
+
+[node name="Восстановление железных дорог" parent="." instance=ExtResource( 1 )]
+margin_left = -59.6581
+margin_top = -464.272
+margin_right = 0.341946
+margin_bottom = -404.272
+
+[node name="Индустрилизация" parent="Восстановление железных дорог" instance=ExtResource( 1 )]
+margin_left = 92.3145
+margin_top = 75.0
+margin_right = 152.315
+margin_bottom = 135.0
+rect_scale = Vector2( 1, 1 )
+
+[node name="Упор на сельск хозяйство" parent="Восстановление железных дорог" instance=ExtResource( 1 )]
+margin_left = -91.4365
+margin_top = 75.0
+margin_right = -31.4362
+margin_bottom = 135.0
+rect_scale = Vector2( 1, 1 )
+
+[node name="Sprite" type="Sprite" parent="."]
+visible = false
+position = Vector2( 2.27374e-13, 0 )
+scale = Vector2( 120.014, 58.034 )
+z_index = -1
+texture = ExtResource( 3 )
+
+[node name="Panel_Focus" parent="." instance=ExtResource( 4 )]
+visible = false

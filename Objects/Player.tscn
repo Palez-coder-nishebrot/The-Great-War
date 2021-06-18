@@ -1,0 +1,284 @@
+[gd_scene load_steps=22 format=2]
+
+[ext_resource path="res://Objects/Player.gd" type="Script" id=1]
+[ext_resource path="res://Graphics/Sprites/panel.png" type="Texture" id=2]
+[ext_resource path="res://Graphics/Fonts/Oswald-VariableFont_wght.ttf" type="DynamicFontData" id=3]
+[ext_resource path="res://Buttons/var_for_buildings.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Objects/settings.gd" type="Script" id=5]
+[ext_resource path="res://Objects/Parties window/Parties_windows.tscn" type="PackedScene" id=6]
+
+[sub_resource type="DynamicFont" id=1]
+font_data = ExtResource( 3 )
+
+[sub_resource type="DynamicFont" id=2]
+font_data = ExtResource( 3 )
+
+[sub_resource type="DynamicFont" id=3]
+font_data = ExtResource( 3 )
+
+[sub_resource type="DynamicFont" id=4]
+font_data = ExtResource( 3 )
+
+[sub_resource type="DynamicFont" id=5]
+font_data = ExtResource( 3 )
+
+[sub_resource type="DynamicFont" id=6]
+font_data = ExtResource( 3 )
+
+[sub_resource type="DynamicFont" id=7]
+font_data = ExtResource( 3 )
+
+[sub_resource type="DynamicFont" id=8]
+font_data = ExtResource( 3 )
+
+[sub_resource type="DynamicFont" id=9]
+font_data = ExtResource( 3 )
+
+[sub_resource type="DynamicFont" id=10]
+font_data = ExtResource( 3 )
+
+[sub_resource type="DynamicFont" id=11]
+font_data = ExtResource( 3 )
+
+[sub_resource type="DynamicFont" id=12]
+font_data = ExtResource( 3 )
+
+[sub_resource type="DynamicFont" id=13]
+font_data = ExtResource( 3 )
+
+[sub_resource type="DynamicFont" id=14]
+font_data = ExtResource( 3 )
+
+[sub_resource type="DynamicFont" id=15]
+font_data = ExtResource( 3 )
+
+[node name="Player" type="Node2D"]
+position = Vector2( 512, 296 )
+script = ExtResource( 1 )
+
+[node name="Camera2D" type="Camera2D" parent="."]
+current = true
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="build_building" type="Button" parent="CanvasLayer"]
+margin_left = 763.004
+margin_top = 566.4
+margin_right = 893.004
+margin_bottom = 598.4
+custom_fonts/font = SubResource( 1 )
+text = "Фабрика"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="build_building2" type="Button" parent="CanvasLayer"]
+margin_left = 633.36
+margin_top = 534.4
+margin_right = 763.36
+margin_bottom = 566.4
+custom_fonts/font = SubResource( 2 )
+text = "Военный завод"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="build_building3" type="Button" parent="CanvasLayer"]
+margin_left = 633.36
+margin_top = 566.4
+margin_right = 763.36
+margin_bottom = 598.4
+custom_fonts/font = SubResource( 3 )
+text = "Ферма"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="build_building4" type="Button" parent="CanvasLayer"]
+margin_left = 893.771
+margin_top = 566.4
+margin_right = 1023.77
+margin_bottom = 598.4
+custom_fonts/font = SubResource( 4 )
+text = "Железные дороги"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="build_building5" type="Button" parent="CanvasLayer"]
+margin_left = 893.771
+margin_top = 534.4
+margin_right = 1023.77
+margin_bottom = 566.4
+custom_fonts/font = SubResource( 5 )
+text = "Угольная шахта"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="build_building6" type="Button" parent="CanvasLayer"]
+margin_left = 503.998
+margin_top = 566.4
+margin_right = 633.998
+margin_bottom = 597.4
+custom_fonts/font = SubResource( 6 )
+text = "Казармы"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="build_building7" type="Button" parent="CanvasLayer"]
+margin_left = 763.004
+margin_top = 534.4
+margin_right = 893.004
+margin_bottom = 566.4
+custom_fonts/font = SubResource( 7 )
+text = "Нефтяная вышка"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Products_or_unit" type="Button" parent="CanvasLayer"]
+visible = false
+margin_left = -1.0
+margin_top = 169.28
+margin_right = 103.0
+margin_bottom = 201.28
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="research" type="Button" parent="CanvasLayer"]
+margin_left = 2.0
+margin_top = -2.0
+margin_right = 103.0
+margin_bottom = 29.0
+custom_fonts/font = SubResource( 8 )
+text = "Исследования"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Parties" type="Button" parent="CanvasLayer"]
+margin_left = 103.0
+margin_top = -2.0
+margin_right = 204.0
+margin_bottom = 29.0
+custom_fonts/font = SubResource( 9 )
+text = "Партии"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Sprite" type="Sprite" parent="CanvasLayer"]
+position = Vector2( 512.284, 11.3299 )
+scale = Vector2( 10.2297, 0.112509 )
+z_index = -1
+texture = ExtResource( 2 )
+
+[node name="Label" type="Label" parent="CanvasLayer"]
+margin_left = 211.0
+margin_top = -5.0
+margin_right = 336.0
+margin_bottom = 29.0
+custom_fonts/font = SubResource( 10 )
+text = "Жетоны рабочих:"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="open_build0" parent="CanvasLayer" instance=ExtResource( 4 )]
+margin_left = 359.0
+margin_top = 566.4
+margin_right = 479.0
+margin_bottom = 598.4
+
+[node name="open_build1" parent="CanvasLayer" instance=ExtResource( 4 )]
+margin_left = 239.0
+margin_top = 566.4
+margin_right = 359.0
+margin_bottom = 598.4
+
+[node name="open_build2" parent="CanvasLayer" instance=ExtResource( 4 )]
+margin_left = 120.0
+margin_top = 566.4
+margin_right = 240.0
+margin_bottom = 598.4
+
+[node name="open_build3" parent="CanvasLayer" instance=ExtResource( 4 )]
+margin_left = 0.797516
+margin_top = 566.4
+margin_right = 120.798
+margin_bottom = 598.4
+
+[node name="settings" type="Node2D" parent="CanvasLayer"]
+visible = false
+script = ExtResource( 5 )
+
+[node name="Quit_game" type="Button" parent="CanvasLayer/settings"]
+margin_left = 445.688
+margin_top = 266.085
+margin_right = 578.688
+margin_bottom = 297.085
+custom_fonts/font = SubResource( 11 )
+text = "Выйти из игры"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Quit_menu" type="Button" parent="CanvasLayer/settings"]
+margin_left = 445.688
+margin_top = 235.085
+margin_right = 578.688
+margin_bottom = 266.085
+custom_fonts/font = SubResource( 12 )
+text = "Выйти в меню"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Continue" type="Button" parent="CanvasLayer/settings"]
+margin_left = 445.688
+margin_top = 173.085
+margin_right = 578.688
+margin_bottom = 204.085
+custom_fonts/font = SubResource( 13 )
+text = "Продолжить"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Setttings" type="Button" parent="CanvasLayer/settings"]
+margin_left = 445.688
+margin_top = 204.085
+margin_right = 578.688
+margin_bottom = 235.085
+custom_fonts/font = SubResource( 14 )
+text = "Настройки"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Parties2" parent="CanvasLayer" instance=ExtResource( 6 )]
+position = Vector2( 605.412, 79.3849 )
+
+[node name="Label2" type="Label" parent="CanvasLayer"]
+margin_left = 2.0
+margin_top = 29.0
+margin_right = 204.0
+margin_bottom = 121.0
+custom_fonts/font = SubResource( 15 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="pressed" from="CanvasLayer/build_building" to="." method="_on_build_building_pressed"]
+[connection signal="pressed" from="CanvasLayer/build_building2" to="." method="_on_build_building2_pressed"]
+[connection signal="pressed" from="CanvasLayer/build_building3" to="." method="_on_build_building3_pressed"]
+[connection signal="pressed" from="CanvasLayer/build_building6" to="." method="_on_build_building6_pressed"]
+[connection signal="pressed" from="CanvasLayer/Parties" to="." method="_on_Parties_pressed"]
+[connection signal="pressed" from="CanvasLayer/settings/Quit_game" to="CanvasLayer/settings" method="_on_Quit_game_pressed"]
+[connection signal="pressed" from="CanvasLayer/settings/Quit_menu" to="CanvasLayer/settings" method="_on_Quit_menu_pressed"]
+[connection signal="pressed" from="CanvasLayer/settings/Continue" to="CanvasLayer/settings" method="_on_Continue_pressed"]
+[connection signal="pressed" from="CanvasLayer/settings/Setttings" to="CanvasLayer/settings" method="_on_Setttings_pressed"]

@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/WW6 (1).mp3-2719d340014ad3e3463aa408e159c68b.mp3str"
+
+[deps]
+
+source_file="res://Sound/Music/WW6 (1).mp3"
+dest_files=[ "res://.import/WW6 (1).mp3-2719d340014ad3e3463aa408e159c68b.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

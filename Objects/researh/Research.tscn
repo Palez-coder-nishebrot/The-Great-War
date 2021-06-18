@@ -1,0 +1,91 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://Graphics/Fonts/Oswald-VariableFont_wght.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://Graphics/Sprites/fon.png" type="Texture" id=2]
+[ext_resource path="res://Objects/researh/Research.gd" type="Script" id=3]
+[ext_resource path="res://Objects/researh/Kavalry.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Objects/researh/Weapon.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Objects/researh/Tech.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Objects/researh/Support.tscn" type="PackedScene" id=7]
+
+[sub_resource type="DynamicFont" id=1]
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=2]
+font_data = ExtResource( 1 )
+
+[node name="Research" type="Node2D"]
+script = ExtResource( 3 )
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 0.000183105, -0.975952 )
+scale = Vector2( 119.83, 68.2612 )
+texture = ExtResource( 2 )
+
+[node name="KavalryButton" type="Button" parent="."]
+margin_left = 838.297
+margin_top = -547.066
+margin_right = 960.297
+margin_bottom = -500.066
+custom_fonts/font = SubResource( 1 )
+text = "Кавалерия"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="FireSupportButton" type="Button" parent="."]
+margin_left = 465.342
+margin_top = -547.066
+margin_right = 597.342
+margin_bottom = -500.066
+custom_fonts/font = SubResource( 1 )
+text = "Огневая поддержка"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="KavalryPart" parent="." instance=ExtResource( 4 )]
+visible = false
+position = Vector2( -115.975, -178.385 )
+
+[node name="WeaponButton" type="Button" parent="."]
+margin_left = 713.882
+margin_top = -547.066
+margin_right = 836.882
+margin_bottom = -500.066
+custom_fonts/font = SubResource( 2 )
+text = "Оружие"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ТесhButton" type="Button" parent="."]
+margin_left = 589.468
+margin_top = -547.066
+margin_right = 712.468
+margin_bottom = -500.066
+custom_fonts/font = SubResource( 2 )
+text = "Наземная техника"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="WeaponPart" parent="." instance=ExtResource( 5 )]
+visible = false
+position = Vector2( -329.945, -178.385 )
+scale = Vector2( 1.2, 1.2 )
+
+[node name="Tech" parent="." instance=ExtResource( 6 )]
+visible = false
+position = Vector2( -958.64, -500.066 )
+scale = Vector2( 1.2, 1.2 )
+
+[node name="Support" parent="." instance=ExtResource( 7 )]
+visible = false
+position = Vector2( -901.04, -400.59 )
+scale = Vector2( 1.2, 1.2 )
+
+[connection signal="pressed" from="KavalryButton" to="." method="_on_Kavalry_pressed"]
+[connection signal="pressed" from="FireSupportButton" to="." method="_on_FireSupportButton_pressed"]
+[connection signal="pressed" from="WeaponButton" to="." method="_on_Weapon_pressed"]
+[connection signal="pressed" from="ТесhButton" to="." method="_on_h_pressed"]

@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://tiles/NEW Tiles/NEW tile.gd" type="Script" id=2]
+
+[node name="NEW tile" type="Node2D"]
+script = ExtResource( 2 )
