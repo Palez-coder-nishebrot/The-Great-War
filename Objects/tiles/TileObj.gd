@@ -7,9 +7,8 @@ var part_of: String
 var city_name: String 
 var units_in_tile: Array = []
 var region: String 
-var vector_hex: Array = []
 var neighbors: Array = []
-var mine: Object
+var booty: String 
 onready var sprite_object = $Sprite
 
 func append_building(building, price) -> void:
@@ -26,24 +25,24 @@ func append_building(building, price) -> void:
 			add_child(building)
 			buildings.append([building.tipe, building])
 			free_factories.append([building.tipe, building])
-			get_node("/root/PlayersObj").playersObj.get(part_of)[1].economic["Единицы производственной мощи"] -= 1
-			get_node("/root/PlayersObj").playersObj.get(part_of)[1].set_tokens_of_workers()
-			get_node("/root/PlayersObj").playersObj.get(part_of)[1].economic["Занятые ЕПМ"] += 1
-			get_node("/root/PlayersObj").playersObj.get(part_of)[1].power_points += 1
+			PlayersObj.playersObj.get(part_of)[1].economic["Единицы производственной мощи"] -= 1
+			PlayersObj.playersObj.get(part_of)[1].set_tokens_of_workers()
+			PlayersObj.playersObj.get(part_of)[1].economic["Занятые ЕПМ"] += 1
+			PlayersObj.playersObj.get(part_of)[1].power_points += 1
 			building.start()
-			get_node("/root/PlayersObj").playersObj.get(part_of)[1].arr_of_buildings[building.tipe] += 1
+			PlayersObj.playersObj.get(part_of)[1].arr_of_buildings[building.tipe] += 1
 			
 		else:
 			if level_of_railways <= 4:
-				get_node("/root/PlayersObj").playersObj.get(part_of)[1].economic["Единицы производственной мощи"] -= 1
-				get_node("/root/PlayersObj").playersObj.get(part_of)[1].set_tokens_of_workers()
-				get_node("/root/PlayersObj").playersObj.get(part_of)[1].economic["Занятые ЕПМ"] += 1
-				get_node("/root/PlayersObj").playersObj.get(part_of)[1].economic["Единицы производственной мощи"] += 1
-				get_node("/root/PlayersObj").playersObj.get(part_of)[1].economic["Деньги"] -= 100
-				get_node("/root/PlayersObj").playersObj.get(part_of)[1].economic["Занятые ЕПМ"] -= 1
-				get_node("/root/PlayersObj").playersObj.get(part_of)[1].set_tokens_of_workers()
+				PlayersObj.playersObj.get(part_of)[1].economic["Единицы производственной мощи"] -= 1
+				PlayersObj.playersObj.get(part_of)[1].set_tokens_of_workers()
+				PlayersObj.playersObj.get(part_of)[1].economic["Занятые ЕПМ"] += 1
+				PlayersObj.playersObj.get(part_of)[1].economic["Единицы производственной мощи"] += 1
+				PlayersObj.playersObj.get(part_of)[1].economic["Деньги"] -= 100
+				PlayersObj.playersObj.get(part_of)[1].economic["Занятые ЕПМ"] -= 1
+				PlayersObj.playersObj.get(part_of)[1].set_tokens_of_workers()
 				level_of_railways += 1
-				get_node("/root/PlayersObj").playersObj.get(part_of)[1].power_points += 0.5
+				PlayersObj.playersObj.get(part_of)[1].power_points += 0.5
 				return_tk()
 
 func make_tech(tech,factory_obj) -> void:
@@ -91,14 +90,20 @@ func set_color_focus_(bool_, part_of_):
 		
 func _ready():
 	get_node("/root/PlayersObj").PlayerObject.connect('set_color_focus', self, 'set_color_focus_')
-	neighbors.append(position - Vector2(88, 160))
-	neighbors.append(position - Vector2(88, -160))
-	neighbors.append(position + Vector2(100, 160))
-	neighbors.append(position + Vector2(100, -160))
+func SetNeighbors():
+	neighbors.append(TileMapReg.position_to_tile.get(position + Vector2(190, 0)))#left
+	neighbors.append(TileMapReg.position_to_tile.get(position - Vector2(190, 0)))#right
+	neighbors.append(TileMapReg.position_to_tile.get(position - Vector2(95, 160)))#left-up
+	neighbors.append(TileMapReg.position_to_tile.get(position - Vector2(95, -160)))#left-down
+	neighbors.append(TileMapReg.position_to_tile.get(position + Vector2(95, 160)))#right-down
+	neighbors.append(TileMapReg.position_to_tile.get(position + Vector2(95, -160)))#
 	
 	
 
 #func StopProduction(building):
 	#building.
 	
+
 	
+func BootyResources():
+	PlayersObj.playersObj.get(part_of)[1].resources[booty] += 1

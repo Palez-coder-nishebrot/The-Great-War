@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Objects/Tilemap/TileMap.gd" type="Script" id=1]
 [ext_resource path="res://Graphics/Безымянный.png" type="Texture" id=2]
 [ext_resource path="res://Objects/City/City.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Objects/Mines/Metal.tscn" type="PackedScene" id=4]
 
 [node name="TileMap" type="Node2D"]
 position = Vector2( 0, -1 )
@@ -54,101 +55,95 @@ monitorable = false
 position = Vector2( 1003.87, 1177.67 )
 polygon = PoolVector2Array( -801.01, -1181.46, 373.649, -1178.79, 176.734, -366.044, -377.316, -290.394, -456.621, -319.15 )
 
+[node name="Metal" parent="." instance=ExtResource( 4 )]
+position = Vector2( 857.592, 139.451 )
+
 [node name="City" parent="." instance=ExtResource( 3 )]
-position = Vector2( 2039.27, 71.0632 )
+position = Vector2( 469.805, 97.4483 )
 
 [node name="City2" parent="." instance=ExtResource( 3 )]
-position = Vector2( 1510.7, 344.787 )
+position = Vector2( 1151.04, 85.7743 )
 
 [node name="City3" parent="." instance=ExtResource( 3 )]
-position = Vector2( 1916.57, 439.174 )
+position = Vector2( 590.918, 385.062 )
 
 [node name="City4" parent="." instance=ExtResource( 3 )]
-position = Vector2( 1554.12, 42.747 )
+position = Vector2( 1138.28, 373.388 )
 
 [node name="City5" parent="." instance=ExtResource( 3 )]
-position = Vector2( 169.298, 71.0632 )
+position = Vector2( 691.283, 735.542 )
 
 [node name="City6" parent="." instance=ExtResource( 3 )]
-position = Vector2( 570.546, 56.38 )
+position = Vector2( 1069.42, 724.185 )
 
 [node name="City7" parent="." instance=ExtResource( 3 )]
-position = Vector2( 1132.38, 56.38 )
+position = Vector2( 857.592, 465.028 )
 
 [node name="City8" parent="." instance=ExtResource( 3 )]
-position = Vector2( 907.092, 344.787 )
+position = Vector2( 1555.59, 109.122 )
 
 [node name="City9" parent="." instance=ExtResource( 3 )]
-position = Vector2( 414.369, 344.787 )
+position = Vector2( 2024.18, 86.4095 )
 
 [node name="City10" parent="." instance=ExtResource( 3 )]
-position = Vector2( 628.644, 344.787 )
+position = Vector2( 1546.64, 322.032 )
 
 [node name="City11" parent="." instance=ExtResource( 3 )]
-position = Vector2( 1080.32, 483.498 )
+position = Vector2( 2033.13, 333.706 )
 
 [node name="City12" parent="." instance=ExtResource( 3 )]
-position = Vector2( 742.59, 721.34 )
+position = Vector2( 1729.92, 518.951 )
 
 [node name="City13" parent="." instance=ExtResource( 3 )]
-position = Vector2( 2039.27, 842.793 )
+position = Vector2( 1417.46, 617.225 )
 
 [node name="City14" parent="." instance=ExtResource( 3 )]
-position = Vector2( 1380.45, 909.388 )
+position = Vector2( 2024.18, 866.408 )
 
 [node name="City15" parent="." instance=ExtResource( 3 )]
-position = Vector2( 1448.96, 1311.34 )
+position = Vector2( 2033.13, 1277.6 )
 
 [node name="City16" parent="." instance=ExtResource( 3 )]
-position = Vector2( 1038.32, 1431.34 )
+position = Vector2( 1729.92, 1022.12 )
 
 [node name="City17" parent="." instance=ExtResource( 3 )]
-position = Vector2( 1958.57, 1187.34 )
+position = Vector2( 1417.46, 1154.6 )
 
 [node name="City18" parent="." instance=ExtResource( 3 )]
-position = Vector2( 961.794, 983.119 )
+position = Vector2( 1138.28, 1022.12 )
 
 [node name="City19" parent="." instance=ExtResource( 3 )]
-position = Vector2( 1916.57, 1638.25 )
+position = Vector2( 1138.28, 1377.01 )
 
 [node name="City20" parent="." instance=ExtResource( 3 )]
-position = Vector2( 1958.57, 1801.75 )
+position = Vector2( 2024.18, 1705.48 )
 
 [node name="City21" parent="." instance=ExtResource( 3 )]
-position = Vector2( 1706.99, 1839.17 )
+position = Vector2( 1729.92, 1705.48 )
 
 [node name="City22" parent="." instance=ExtResource( 3 )]
-position = Vector2( 1660.67, 2075.67 )
+position = Vector2( 1342.15, 1705.48 )
 
 [node name="City23" parent="." instance=ExtResource( 3 )]
-position = Vector2( 1297.87, 1858.76 )
+position = Vector2( 1138.28, 1982.35 )
 
 [node name="City24" parent="." instance=ExtResource( 3 )]
-position = Vector2( 1274.7, 2118.14 )
+position = Vector2( 1555.59, 2026.4 )
 
 [node name="City25" parent="." instance=ExtResource( 3 )]
-position = Vector2( 1448.96, 1704.18 )
+position = Vector2( 1906.71, 2026.4 )
 
 [node name="City26" parent="." instance=ExtResource( 3 )]
-position = Vector2( 309.732, 1118.78 )
+position = Vector2( 785.387, 1982.35 )
 
 [node name="City27" parent="." instance=ExtResource( 3 )]
-position = Vector2( 587.899, 1118.78 )
+position = Vector2( 528.653, 1705.48 )
 
 [node name="City28" parent="." instance=ExtResource( 3 )]
-position = Vector2( 414.369, 1577.81 )
+position = Vector2( 469.805, 1377.01 )
 
 [node name="City29" parent="." instance=ExtResource( 3 )]
-position = Vector2( 704.535, 1577.81 )
-
-[node name="City30" parent="." instance=ExtResource( 3 )]
-position = Vector2( 557.074, 1839.17 )
-
-[node name="City31" parent="." instance=ExtResource( 3 )]
-position = Vector2( 961.794, 2118.14 )
-
-[node name="City32" parent="." instance=ExtResource( 3 )]
-position = Vector2( 414.369, 953.268 )
+position = Vector2( 528.653, 1059.87 )
 
 [connection signal="area_entered" from="Bascaky_Ts" to="." method="_on_Bascaky_Ts_area_entered"]
 [connection signal="area_entered" from="Bascaky_C" to="." method="_on_Bascaky_C_area_entered"]

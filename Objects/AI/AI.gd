@@ -14,7 +14,11 @@ var resources: Dictionary = {
 	"Пшеница":100,
 	"Топливо":100,
 	"Резина": 100,
-	"Уголь":  100,}
+	"Уголь":  100,
+	"Нефть":  100,
+}
+
+var bonuses_for_research: int = 0
 
 var bonuses: Dictionary = {'Кавалерия': [0, 0], #0 -> attak
 'Пехотная дивизия': [0, 0],         #1 -> hp
@@ -33,7 +37,8 @@ var arr_of_buildings: Dictionary = {
 'Казармы':0,
 'Завод легкой промышленности':0,
 'Завод тяжелой промышленности': 0,}
-var arr_of_cities = []
+var arr_of_cities: Array = []
+var arr_of_booty: Array = []
 
 var warhouse_of_tech: Dictionary = {"Машина с пулеметом": 1, "Тяжелый танк Шевченко": 1, 'Грузовик I': 1, "Средний танк 'Галиция'": 1}
 

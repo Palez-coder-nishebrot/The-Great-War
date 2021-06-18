@@ -1,27 +1,30 @@
 extends Node2D
 
 func _ready():
-	var X = 190
+	var X = 190#190
 	var Y = 160
-	var pos_s = Vector2(0, 0)
 	var pos = Vector2(0, 0)
 	for i in range(7):
 		for u in range(12):
 			var hex = load("res://Objects/tiles/Tile.tscn").instance()
 			hex.position = pos
-			TileMapReg.position_to_tile[pos] = hex
-			add_child(hex)
 			pos.x += X
+			add_child(hex)
+			TileMapReg.position_to_tile[hex.position] = hex
 		pos.y += Y
-		pos.x = pos_s.x - 100
+		pos.x = -95
+		
 		for u in range(12):
 			var hex = load("res://Objects/tiles/Tile.tscn").instance()
 			hex.position = pos
-			TileMapReg.position_to_tile[pos] = hex
-			add_child(hex)
 			pos.x += X
-		pos.x = pos_s.x 
+			add_child(hex)
+			TileMapReg.position_to_tile[hex.position] = hex
 		pos.y += Y
+		pos.x = 0
+		
+	for i in TileMapReg.position_to_tile:
+		TileMapReg.position_to_tile[i].SetNeighbors()
 		
 	$Nasardy.monitoring = true
 	$Adamanty.monitoring = true
@@ -52,3 +55,7 @@ func _on_Adamanty_area_entered(area):
 func check(partOf, object):
 	object.get_parent().sprite_object.modulate = PlayersObj.playersObj[partOf][0]
 	object.get_parent().part_of = partOf
+
+
+
+	

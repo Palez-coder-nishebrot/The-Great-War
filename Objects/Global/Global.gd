@@ -6,7 +6,6 @@ signal new_day_timer(info)
 var speed_of_game:float = 30.0
 
 
-
 func _process(delta):
 	_on_time_of_game_timeout()
 	set_process(false)
